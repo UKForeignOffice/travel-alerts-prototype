@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="index">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Which country would you like to receive travel alerts for?
+		</h1>
+		<form class="form" method="post" action="name_email">
+			<div class="govuk-form-group">
+				<label class="govuk-label" for="country">
+					Choose a country
+				</label>
+				<select class="govuk-select" id="country" name="country">
+					<option value="Spain" {% if data['country'] === 'Spain' %}selected{% endif %}>Spain</option>
+					<option value="Thailand" {% if data['country'] === 'Thailand' %}selected{% endif %}>Thailand</option>
+				</select>
+			</div>
+
+			<button class="govuk-button" data-module="govuk-button">Continue</button>
+
+		</form>
+	</div>
+</div>
+{% endblock %}
