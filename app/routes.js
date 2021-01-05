@@ -6,11 +6,20 @@ const NotifyClient = require('notifications-node-client').NotifyClient,
 
 // Add your routes here - above the module.exports line
 
+
+router.use('/add_country', (req, res) => {
+  const { countries = [], countryToAdd } = req.session.data;
+  if (!countries.includes(countryToAdd)) {
+    req.session.data.countries = [...countries, countryToAdd].sort();
+  }
+  res.redirect('/country');
+});
+
 router.post('/confirmation', (req, res) => {
   const { emailAddress, phoneNumber } = req.session.data;
   const options = {
     personalisation: {
-      'country': req.session.data.country,
+      'countries': req.session.data.countries,
       'first name': req.session.data.firstName
     }
   };

@@ -12,7 +12,7 @@
       <div class="govuk-panel govuk-panel--confirmation">
         <h1 class="govuk-panel__title">You’re subscribed to travel alerts</h1>
         <div class="govuk-panel__body">
-          for {{data['country']}}
+          for {{data['countries'].join(', ')}}
         </div>
       </div>
 		{% if data['emailAddress'] %}
