@@ -9,7 +9,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-			Tell us who to send the travel alert emails to
+			Tell us who to send the travel alert to
 		</h1>
 		<form class="form" method="post" action="friends-and-family">
 
@@ -22,7 +22,11 @@
 
 			<div class="govuk-checkboxes" data-module="govuk-checkboxes">
 				<div class="govuk-checkboxes__item">
-				  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+					{% if data['emailAddress'] %}
+					  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact" checked>
+					{% else %}
+					  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+				  	{% endif %}
 				  <label class="govuk-label govuk-checkboxes__label" for="contact">
 					Alert me by Email
 				  </label>
@@ -37,7 +41,11 @@
 			</div>
 			<div class="govuk-checkboxes" data-module="govuk-checkboxes">
 				<div class="govuk-checkboxes__item">
+					{% if data['phoneNumber'] %}
+					<input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3" checked>
+					{% else %}
 					<input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3">
+					{% endif %}
 					<label class="govuk-label govuk-checkboxes__label" for="contact-3">
 					Alert me by Text
 					</label>
