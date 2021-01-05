@@ -3,15 +3,18 @@ const express = require('express')
 const router = express.Router()
 const NotifyClient = require('notifications-node-client').NotifyClient,
   notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+const fullCountryList = require('./data/countries.json');
+
+const fullCountryNames = Object.values(fullCountryList).map(country => country.item[0].name).sort();
 
 // Add your routes here - above the module.exports line
-
 
 router.use('/add_country', (req, res) => {
   const { countries = [], countryToAdd } = req.session.data;
   if (!countries.includes(countryToAdd)) {
     req.session.data.countries = [...countries, countryToAdd].sort();
   }
+  req.session.data.availableCountries = fullCountryNames.filter(country => !req.session.data.countries.includes(country));
   res.redirect('/country');
 });
 
