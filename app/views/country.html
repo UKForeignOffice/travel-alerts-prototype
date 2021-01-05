@@ -38,7 +38,11 @@
 		<form class="form" method="post" action="add_country">
 			<div class="govuk-form-group">
 				<label class="govuk-label" for="countryToAdd">
+					{% if data['countries'] and data['countries'].length %}
 					Add another country
+					{% else %}
+					Choose a country
+					{% endif %}
 				</label>
 				<select class="govuk-select" id="countryToAdd" name="countryToAdd">
 					{% for country in data['availableCountries'] %}

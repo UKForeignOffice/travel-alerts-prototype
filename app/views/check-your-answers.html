@@ -55,7 +55,11 @@
             Countries
           </dt>
           <dd class="govuk-summary-list__value">
+			  {% if data['countries'] and data['countries'].length %}
 			  {{data['countries'].join(', ')}}
+			  {% else %}
+			  None selected
+			  {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="country">
