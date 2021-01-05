@@ -1,76 +1,402 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  Start page example
-{% endblock %}
-
-{% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
-{% endblock %}
-
 {% block beforeContent %}
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="#">Section</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link">Subsection</a>
-      </li>
-    </ol>
-  </div>
+
+	<!--[if gt IE 8]><!--><link rel="stylesheet" media="screen" href="https://www.gov.uk/assets/static/govuk-template-3e3f4a131aca72f9b2e458dfd318f65420aef6ada35539243aac38ebbbbcc64f.css">
+	<!--<![endif]-->
+	<!--[if IE 8]><link rel="stylesheet" media="screen" href="https://www.gov.uk/assets/static/govuk-template-ie8-e4fff1a2ce0e93e66e96db6eedae992a3859b1e608aa46bd3e42ac30f61c58ac.css" /><![endif]-->
+	<link rel="stylesheet" media="print" href="https://www.gov.uk/assets/static/govuk-template-print-1076519521c2fffbbf75ab3b0d3b32ee2d96ac7e9778f1cdfac1771eefd1a1c0.css">
+
+	<link rel="stylesheet" media="all" href="https://www.gov.uk/assets/static/fonts-c57ab80a95f2b1764162611b3c98a4c098b356f8e30baf1e50cd63edea464c01.css">
+	<!--[if lt IE 9]><script src="https://www.gov.uk/assets/static/ie-a4524544a53d57a7e259b4bb966b9c32557c98c920b77e52d09304642b68401a.js"></script><![endif]-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" media="screen" href="https://www.gov.uk/assets/static/core-layout-84fc3216469951e265aa202804a6c6141dc994b9d9f2aea628fac2a6aefd4580.css">
+	<!--[if lte IE 8]><link rel="stylesheet" media="screen" href="https://www.gov.uk/assets/static/core-layout-ie8-773f4cacc5b2d19e924e37800dca2a1e66acd94c661e1cd95a8a165021bdc667.css" /><script>var ieVersion = 8;</script><![endif]-->
+
+	<link rel="stylesheet" media="print" href="https://www.gov.uk/assets/static/core-layout-print-c5e97d0ed0feb1d1fc703ef0ed5201026330ec091e02c33fb1db277df068ede5.css">
+
+
+	<link rel="stylesheet" media="screen" href="https://www.gov.uk/assets/government-frontend/application-5f0c2950bf2d2003027656f490d55a1f5754275431b3cafcdd2a13c00635fd0d.css">
+	<link rel="stylesheet" media="print" href="https://www.gov.uk/assets/government-frontend/print-05953d9b2040c0cc5c430d0df16bbca7dc70c4ac128d23a205253a4b7886c340.css">
+	<link rel="alternate" type="application/atom+xml" title="Recent updates for Thailand" href="https://www.gov.uk/foreign-travel-advice/thailand.atom">
+
+
+
+	<div class="gem-c-contextual-breadcrumbs">
+
+
+
+		<div class="gem-c-breadcrumbs govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" data-module="track-click">
+			<ol class="govuk-breadcrumbs__list">
+				<li class="govuk-breadcrumbs__list-item">
+					<a data-track-category="homeLinkClicked" data-track-action="homeBreadcrumb" data-track-label="" data-track-options="{}" class="govuk-breadcrumbs__link" href="/">Home</a>
+				</li>
+				<li class="govuk-breadcrumbs__list-item">
+					<a data-track-category="breadcrumbClicked" data-track-action="2" data-track-label="/world/all" data-track-options='{"dimension28":"4","dimension29":"World"}' class="govuk-breadcrumbs__link" href="/world/all">World</a>
+				</li>
+				<li class="govuk-breadcrumbs__list-item">
+					<a data-track-category="breadcrumbClicked" data-track-action="3" data-track-label="/world/thailand" data-track-options='{"dimension28":"4","dimension29":"UK help and services in Thailand"}' class="govuk-breadcrumbs__link" href="/world/thailand">UK help and services in Thailand</a>
+				</li>
+				<li class="govuk-breadcrumbs__list-item">
+					<a data-track-category="breadcrumbClicked" data-track-action="4" data-track-label="/world/living-in-thailand" data-track-options='{"dimension28":"4","dimension29":"Living in Thailand"}' class="govuk-breadcrumbs__link" href="/world/living-in-thailand">Living in Thailand</a>
+				</li>
+			</ol>
+		</div>
+
+
+
+	</div>
 {% endblock %}
 
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+	{% block content %}
+	<main role="main" id="content" class="travel-advice" lang="en">
 
-      <h1 class="govuk-heading-xl">
-        {% if serviceName %} {{ serviceName }} {% endif %}
-      </h1>
 
-		<p>Use this service to subscribe to travel alerts for your chosen countries.</p>
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds travel-advice__header">
+				<div class="gem-c-title govuk-!-margin-top-8 govuk-!-margin-bottom-8">
+    <span class="govuk-caption-xl gem-c-title__context">
+      Foreign travel advice
+    </span>
+					<h1 class="gem-c-title__text ">
+						Thailand
+					</h1>
+				</div>
 
-      <p>Registering takes around 2 minutes.</p>
+				<div class="travel-advice-notice">
+					<div class="travel-advice-notice__header">
 
-      <a href="country" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">
-        Start now
-        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
-          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-        </svg>
-      </a>
+						<div id="warning-text-00f7fb76" class="gem-c-warning-text govuk-warning-text">
+							<span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+							<h2 class="govuk-warning-text__text gem-c-warning-text__text--large">
+								<span class="govuk-warning-text__assistive">Important</span>
+								COVID-19 travel guidance
 
-      <h2 class="govuk-heading-m">Before you start</h2>
+							</h2>
+						</div>
+					</div>
+					<div class="travel-advice-notice__content">
+						<p class="govuk-body">
+							<strong>
+								International travel is increasingly restricted. In the UK, different rules apply in <a href="/guidance/national-lockdown-stay-at-home">England</a>, <a href="https://www.gov.scot/coronavirus-covid-19/">Scotland</a>, <a href="https://gov.wales/covid-19-alert-levels">Wales</a> and <a href="https://www.nidirect.gov.uk/articles/coronavirus-covid-19-regulations-guidance-what-restrictions-mean-you">Northern Ireland</a>. For example, in England you must not leave home including to travel abroad, unless you have a legally permitted reason to do so, such as for essential work purposes.
+							</strong>
+						</p>
+						<p class="govuk-body">
+							If you are legally permitted to travel, <a href="/guidance/travel-advice-novel-coronavirus">check our advice</a> for the country you are visiting. Other countries have closed borders, and may further restrict movement or bring in new rules including testing requirements with little warning. Before you return to the UK you must <a href="/provide-journey-contact-details-before-travel-uk">provide your journey and contact details</a>. Also check if you need to <a href="/uk-border-control">self isolate</a>.
+						</p>
+						<p class="govuk-body">
+							If you are travelling abroad and wish to return to the UK, contact your airline or travel provider.
+						</p>
+					</div>
+				</div>
 
-      <p>You can also <a href="#">register by post</a>.</p>
+				<aside class="part-navigation-container" role="complementary">
+					<nav role="navigation" class="govuk-grid-row part-navigation" aria-label="Travel advice pages" data-module="track-click">
+						<nav class="gem-c-contents-list " aria-label="Contents" role="navigation" data-module="track-click">
+							<h2 class="gem-c-contents-list__title">
+								Contents
+							</h2>
+							<ol class="gem-c-contents-list__list">
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
+									Summary
 
-      <p>The online service is also available in <a href="#">Welsh (Cymraeg)</a>.</p>
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 2" data-track-label="/foreign-travel-advice/thailand/coronavirus" data-track-options='{"dimension29":"Coronavirus"}' href="/foreign-travel-advice/thailand/coronavirus">Coronavirus</a>
 
-      <p>You can’t register for this service if you’re in the UK illegally.</p>
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 3" data-track-label="/foreign-travel-advice/thailand/safety-and-security" data-track-options='{"dimension29":"Safety and security"}' href="/foreign-travel-advice/thailand/safety-and-security">Safety and security</a>
 
-    </div>
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 4" data-track-label="/foreign-travel-advice/thailand/terrorism" data-track-options='{"dimension29":"Terrorism"}' href="/foreign-travel-advice/thailand/terrorism">Terrorism</a>
 
-    <div class="govuk-grid-column-one-third">
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 5" data-track-label="/foreign-travel-advice/thailand/entry-requirements" data-track-options='{"dimension29":"Entry requirements"}' href="/foreign-travel-advice/thailand/entry-requirements">Entry requirements</a>
 
-      <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Helpful information
-        </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a href="https://www.gov.uk/foreign-travel-advice">
-                Travel advice, for the country you're interested in
-              </a>
-			</li>
-          </ul>
-        </nav>
-      </aside>
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 6" data-track-label="/foreign-travel-advice/thailand/local-laws-and-customs" data-track-options='{"dimension29":"Local laws and customs"}' href="/foreign-travel-advice/thailand/local-laws-and-customs">Local laws and customs</a>
 
-    </div>
-  </div>
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 7" data-track-label="/foreign-travel-advice/thailand/health" data-track-options='{"dimension29":"Health"}' href="/foreign-travel-advice/thailand/health">Health</a>
+
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 8" data-track-label="/foreign-travel-advice/thailand/money" data-track-options='{"dimension29":"Money"}' href="/foreign-travel-advice/thailand/money">Money</a>
+
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 9" data-track-label="/foreign-travel-advice/thailand/natural-disasters" data-track-options='{"dimension29":"Natural disasters"}' href="/foreign-travel-advice/thailand/natural-disasters">Natural disasters</a>
+
+								</li>
+								<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+									<a class="gem-c-contents-list__link govuk-link " data-track-category="contentsClicked" data-track-action="content_item 10" data-track-label="/foreign-travel-advice/thailand/travel-advice-help-and-support" data-track-options='{"dimension29":"Travel advice help and support"}' href="/foreign-travel-advice/thailand/travel-advice-help-and-support">Travel advice help and support</a>
+
+								</li>
+							</ol>
+						</nav>
+					</nav>
+
+					<section class="gem-c-subscription-links ">
+						<h2 class="gem-c-subscription-links__hidden-header visuallyhidden">Subscriptions</h2>
+						<ul class="gem-c-subscription-links__list">
+							<li class="gem-c-subscription-links__list-item">
+
+								<a class="gem-c-subscription-links__item  gem-c-subscription-links__item--link" href="/add_country?countryToAdd=Thailand">
+									NEW - get travel alerts for Thailand by email or text
+								</a>
+							</li>
+							<li class="gem-c-subscription-links__list-item">
+								<a class="gem-c-subscription-links__item  gem-c-subscription-links__item--link" href="/foreign-travel-advice/thailand/email-signup">           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"></path></svg>
+									Get emails when this page is updated
+								</a>
+							</li>
+
+							<li class="gem-c-subscription-links__list-item">
+
+								<a class="gem-c-subscription-links__item  gem-c-subscription-links__item--link" href="/foreign-travel-advice/thailand.atom">            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M1.996 11A2 2 0 0 0 0 12.993c0 1.101.895 1.99 1.996 1.99 1.106 0 2-.889 2-1.99a2 2 0 0 0-2-1.993zM.002 5.097V7.97c1.872 0 3.632.733 4.958 2.059A6.984 6.984 0 0 1 7.015 15h2.888c0-5.461-4.443-9.903-9.9-9.903zM.006 0v2.876c6.676 0 12.11 5.44 12.11 12.124H15C15 6.731 8.273 0 .006 0z"></path></svg>
+									Subscribe to feed
+								</a>
+							</li>
+						</ul>
+
+					</section>
+				</aside>
+			</div>
+		</div>
+
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds">
+				<h1 class="part-title">
+					Summary
+				</h1>
+
+
+				<div class="gem-c-metadata" data-module="gem-toggle">
+					<dl data-module="track-click">
+						<dt class="gem-c-metadata__term">Still current at:</dt>
+						<dd class="gem-c-metadata__definition">
+							5 January 2021
+
+						</dd>
+						<dt class="gem-c-metadata__term">Updated:</dt>
+						<dd class="gem-c-metadata__definition">
+							4 January 2021
+
+						</dd>
+						<dt class="gem-c-metadata__term">Latest update:</dt>
+						<dd class="gem-c-metadata__definition">
+							<p>Update to information on domestic travel options and COVID-related restrictions ('Summary' and 'Coronavirus' pages)</p>
+
+						</dd>
+					</dl>
+				</div>
+				<figure class="map">
+					<img src="https://assets.publishing.service.gov.uk/media/5f4f3052e90e071c77d50393/FCDO__TA__040_-_Thailand_Travel_Advice_Ed1__WEB_.jpg" alt="" class="map-image">
+					<figcaption>
+
+						<a class="app-c-download-link govuk-link" href="https://assets.publishing.service.gov.uk/media/5f4f30528fa8f57fba704534/FCDO__TA__040_-_Thailand_Travel_Advice_Ed1.pdf">
+							<svg class="app-c-download-link__icon" aria-hidden="true" viewbox="0 0 25 25" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+								<g>
+									<path d="M23 5h2v20H5v-2h18V5z"></path>
+									<path d="M0 0h20v20H0z"></path>
+								</g>
+							</svg>Download map (PDF)
+						</a>
+
+					</figcaption>
+				</figure>
+
+
+
+				<div class="gem-c-govspeak govuk-govspeak direction-ltr" data-module="govspeak">
+
+					<p><strong>The Foreign, Commonwealth &amp; Development Office (FCDO) advises against all but essential travel to areas within the provinces on the Thailand-Malaysia border, including:</strong></p>
+
+					<ul>
+						<li>Pattani</li>
+						<li>Yala</li>
+						<li>Narathiwat</li>
+						<li>Southern Songkhla province. This does not include areas north of and including the A43 road between Hat Yai and Sakom, and areas north-west of and including the train line which runs between Hat Yai and Pedang Besar.</li>
+					</ul>
+
+					<div class="call-to-action">
+						<div role="note" aria-label="Warning" class="application-notice help-notice">
+							<p>Travel to Thailand is subject to entry restrictions</p>
+						</div>
+
+						<ul>
+							<li>All travellers entering Thailand will be subject to a 14-day state quarantine at a Thai government-designated facility at your own expense. If suspected of carrying COVID-19, you may be denied entry into the country</li>
+						</ul>
+
+						<p>See <a href="/foreign-travel-advice/thailand/entry-requirements">Entry requirements</a> for more information before you plan to travel.</p>
+
+						<div role="note" aria-label="Warning" class="application-notice help-notice">
+							<p>Preparing for your return journey to the UK</p>
+						</div>
+
+						<p>If you’re returning to the UK from overseas, you will need to:</p>
+
+						<ul>
+							<li>
+								<a href="/provide-journey-contact-details-before-travel-uk">provide your journey and contact details</a> before you travel</li>
+							<li><a href="/uk-border-control">check if you need to self-isolate on your return</a></li>
+						</ul>
+					</div>
+
+					<p>Self-isolation on returning to the UK from Thailand is not required if you are flying directly, though some restrictions may apply if you are transiting a third country. <a href="https://www.gov.uk/uk-border-control">Check the latest guidance</a> for <a href="https://www.gov.uk/guidance/coronavirus-covid-19-travel-corridors">England</a>, <a rel="external" href="https://www.nidirect.gov.uk/forms/feedback?s=/articles/coronavirus-covid-19-travel-advice">Northern Ireland</a>, <a rel="external" href="https://www.gov.scot/publications/coronavirus-covid-19-public-health-checks-at-borders/pages/exemptions/">Scotland</a> and <a rel="external" href="https://gov.wales/written-statement-health-protection-coronavirus-international-travel-wales-amendments-1">Wales</a>.</p>
+
+					<p>Check our <a href="/guidance/travel-advice-novel-coronavirus">advice on foreign travel during the coronavirus (COVID-19) pandemic</a> and <a href="/foreign-travel-advice/thailand/email-signup">sign up for email alerts</a> for this travel advice.</p>
+
+					<p>If you’re planning travel to Thailand, find out what you need to know about coronavirus there in the <a href="/foreign-travel-advice/thailand/coronavirus">Coronavirus section</a>.</p>
+
+					<p>During the COVID-19 pandemic, it is more important than ever to get travel insurance and check it provides sufficient cover. See the FCDO’s <a href="/guidance/foreign-travel-insurance">guidance on foreign travel insurance</a>.</p>
+
+					<p>Due to a recent increase in COVID-19 cases across Thailand, the Thai authorities have introduced a number of new disease control measures at national and local levels. The situation is likely to continue to change in the coming weeks, with measures being introduced or lifted at any time.  You should follow the advice of the Thai authorities.  See <a href="/foreign-travel-advice/thailand/coronavirus">Coronavirus</a>.</p>
+
+					<p>The local situation may change and further measures may be introduced at any time. You should follow the advice of the Thai authorities. See <a href="/foreign-travel-advice/thailand/coronavirus">Coronavirus</a>.</p>
+
+					<p>Activists may continue to hold rallies across Thailand in the coming weeks. In Bangkok, potential rally locations include the Democracy Monument on Ratchadamnoen Avenue, the Ratchaphrasong Shopping District Skywalk near the MBK building and Bangkok Art and Cultural Centre, and university campuses. Rallies may disrupt traffic and public transport,  commercial activity and there may be a heightened security presence.</p>
+
+					<p>There have been incidents of shootings at recent protests.</p>
+
+					<p>Avoid any protests or political gatherings and be wary of making political statements in public. Lèse-majesté (criticism of the monarchy in any form) is a crime which can be broadly interpreted and can carry a long jail sentence. See <a href="/foreign-travel-advice/thailand/safety-and-security#political-situation">Political situation</a></p>
+
+					<p>Terrorists are very likely to try to carry out attacks in Thailand. On 2 August 2019, a number of small explosions occurred in Bangkok. On 10 March 2019 a number of small explosions occurred in Satun City and in Patthalung Province in the south of Thailand. The authorities have on a number of occasions warned of the possibility of attacks to coincide with symbolic dates or holidays. Take care, particularly in public places, follow the advice of local authorities and monitor local media reports. See <a href="/foreign-travel-advice/thailand/terrorism">Terrorism</a></p>
+
+					<p>Urban areas across Thailand, especially in Bangkok and Chiang Mai, can experience poor air quality and high PM 2.5 counts, occasionally entering the unhealthy and hazardous levels. See <a href="/foreign-travel-advice/thailand/health#air-quality">Air quality</a></p>
+
+					<p>Make sure you research local laws and customs before you travel. Laws and penalties can be different from the UK. Conviction for possession, distribution or manufacture of drugs can lead to the death penalty. See <a href="/foreign-travel-advice/thailand/local-laws-and-customs">Local laws and customs</a></p>
+
+					<p>There are a high number of road traffic accidents in Thailand especially involving motorcycles. See <a href="/foreign-travel-advice/thailand/safety-and-security#road-travel">Road travel</a></p>
+
+					<p>The rainy season in much of Thailand is from May to October. See <a href="/foreign-travel-advice/thailand/natural-disasters#rainy-season">Rainy season</a></p>
+
+					<p>UK health authorities have classified Thailand as having a risk of Zika virus transmission. For information and advice about the risks associated with Zika virus, visit the <a rel="external" href="http://travelhealthpro.org.uk/country/221/thailand#Other_risks">National Travel Health Network and Centre website</a>.</p>
+
+					<p>The <a rel="external" href="http://www.tatnews.org/contact-us/">Tourist Authority of Thailand’s website</a> and call centre (1672 - press ‘9’ for English) are able to provide some general advice to tourists in English. If you need to contact local emergency services, call 1155 (tourist police) or 1669 (emergency medical services).</p>
+
+					<p>If you need emergency help from the UK government, contact the <a href="https://www.gov.uk/government/world/embassies">nearest British Embassy, Consulate or High Commission</a>.
+						Consular support is not available in the parts of Thailand where the FCDO advises against all but essential travel (as set out above).</p>
+
+					<p>If you’re living in Thailand or planning to stay for a longer period, check the <a href="https://www.gov.uk/guidance/living-in-thailand">Living in Thailand guide</a> in addition to this travel advice.</p>
+
+					<p>The <a href="https://www.gov.uk/government/collections/overseas-business-risk">Overseas Business Risk service</a> offers information and advice for British companies operating overseas on how to manage political, economic, and business security-related risks.</p>
+
+
+				</div>
+
+				<nav class="gem-c-pagination" role="navigation" aria-label="Pagination">
+					<ul class="gem-c-pagination__list" data-module="track-click">
+						<li class="gem-c-pagination__item gem-c-pagination__item--next">
+							<a href="/foreign-travel-advice/thailand/coronavirus" class="gem-c-pagination__link" rel="next" data-track-category="contentsClicked" data-track-action="next" data-track-label="/foreign-travel-advice/thailand/coronavirus" data-track-dimension="next" data-track-dimension-index="29">
+          <span class="gem-c-pagination__link-title">
+            <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewbox="0 0 17 13">
+              <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+            <span class="gem-c-pagination__link-text">
+              Next
+            </span>
+          </span>
+								<span class="gem-c-pagination__link-divider visually-hidden">:</span>
+								<span class="gem-c-pagination__link-label">Coronavirus</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+
+
+				<div class="gem-c-print-link gem-c-print-link--show-without-js govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+					<a class="govuk-link gem-c-print-link__link govuk-link--no-visited-state" rel="alternate" data-module="button" role="button" href="/foreign-travel-advice/thailand/print">Print entire guide</a>
+				</div>
+			</div>
+
+			<div class="govuk-grid-column-one-third">
+
+				<div class="gem-c-contextual-sidebar">
+
+
+					<a class="govuk-link gem-c-contextual-sidebar__brexit-cta" data-module="track-click" data-track-category="relatedLinkClicked" data-track-action="1.0 Transition" data-track-label="/transition" data-track-dimension="Check how the new rules affect you" data-track-dimension-index="29" lang="en" href="/transition">
+						<h2 class="gem-c-contextual-sidebar__brexit-heading">Brexit</h2>
+						<p class="gem-c-contextual-sidebar__brexit-text">Check how the new rules affect you</p>
+					</a>
+
+
+
+					<div class="gem-c-related-navigation">
+
+						<h2 id="related-nav-related_items-af8b31ae" class="gem-c-related-navigation__main-heading" data-track-count="sidebarRelatedItemSection">
+							Related content
+						</h2>
+
+
+
+
+						<nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-related_items-af8b31ae" data-module="gem-toggle">
+
+
+							<ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+
+								<li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.1 Related content" data-track-label="/guidance/about-foreign-commonwealth-development-office-travel-advice" data-track-options='{"dimension28":"4","dimension29":"About Foreign, Commonwealth \u0026 Development Office travel advice"}' href="/guidance/about-foreign-commonwealth-development-office-travel-advice">About Foreign, Commonwealth &amp; Development Office travel advice</a></li>
+								<li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.2 Related content" data-track-label="/guidance/how-to-deal-with-a-crisis-overseas" data-track-options='{"dimension28":"4","dimension29":"What to do if you’re affected by a crisis overseas"}' href="/guidance/how-to-deal-with-a-crisis-overseas">What to do if you’re affected by a crisis overseas</a></li>
+								<li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.3 Related content" data-track-label="/guidance/foreign-travel-checklist" data-track-options='{"dimension28":"4","dimension29":"Foreign travel checklist"}' href="/guidance/foreign-travel-checklist">Foreign travel checklist</a></li>
+								<li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked" data-track-action="1.4 Related content" data-track-label="/world/thailand" data-track-options='{"dimension28":"4","dimension29":"UK help and services in Thailand"}' href="/world/thailand">UK help and services in Thailand</a></li>
+
+							</ul>
+						</nav>
+
+					</div>
+
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds">
+
+				<div class="gem-c-contextual-footer">
+
+					<div class="gem-c-related-navigation">
+
+
+
+
+
+						<nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-topics-3f21d110" data-module="gem-toggle">
+
+							<h2 id="related-nav-topics-3f21d110" class="gem-c-related-navigation__sub-heading gem-c-related-navigation__sub-heading--footer" data-track-count="footerRelatedItemSection">Explore the topic</h2>
+
+							<ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+
+								<li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer" data-track-category="relatedLinkClicked" data-track-action="1.1 Explore the topic" data-track-label="/world/living-in-thailand" data-track-options='{"dimension28":"2","dimension29":"Living in Thailand"}' href="/world/living-in-thailand">Living in Thailand</a></li>
+								<li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer" data-track-category="relatedLinkClicked" data-track-action="1.2 Explore the topic" data-track-label="/world/travelling-to-thailand" data-track-options='{"dimension28":"2","dimension29":"Travelling to Thailand"}' href="/world/travelling-to-thailand">Travelling to Thailand</a></li>
+
+							</ul>
+						</nav>
+
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+
+
+	</main>
+
 {% endblock %}
