@@ -8,8 +8,10 @@ const NotifyClient = require('notifications-node-client').NotifyClient,
 
 
 router.use('/add_country', (req, res) => {
-  const { countries, countryToAdd } = req.session.data;
-  req.session.data.countries = [...(countries || []), countryToAdd].sort();
+  const { countries = [], countryToAdd } = req.session.data;
+  if (!countries.includes(countryToAdd)) {
+    req.session.data.countries = [...countries, countryToAdd].sort();
+  }
   res.redirect('/country');
 });
 
