@@ -27,8 +27,7 @@ router.post('/confirmation', (req, res) => {
   const { emailAddress, phoneNumber } = req.session.data;
   const options = {
     personalisation: {
-      'countries': req.session.data.countries,
-      'first name': req.session.data.firstName
+      'countries': req.session.data.countries
     }
   };
 
