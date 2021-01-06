@@ -17,14 +17,16 @@
       </div>
 		{% if data['emailAddress'] %}
       <p>
-        We have sent you a confirmation email, to {{data['emailAddress']}}
+        We have sent a confirmation email to {{data['emailAddress']}}
       </p>
 		{% endif %}
 		{% if data['phoneNumber'] %}
 		<p>
-			We have sent you a confirmation text message, to {{data['phoneNumber']}}
+			We have sent a confirmation text message to {{data['phoneNumber']}}
 		</p>
 		{% endif %}
+		<br />
+		<hr />
       <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
 
 
