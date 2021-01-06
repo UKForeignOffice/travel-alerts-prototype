@@ -8,41 +8,40 @@
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">
+			<h1 class="govuk-heading-xl">
             Optional - invite friends and family to subscribe
         </h1>
-        <p>You can invite other people to subscribe to emergency alerts for the countries you've selected, by entering their email addresses here.</p>
-        <form id="emailAddressList" class="form" method="post" action="check-your-answers">
-        {% if data['emailaddresses'] and data['emailaddresses'].length %}
+        	<p>You can invite other people to subscribe to emergency alerts for the countries you've selected, by entering their email addresses here.</p>
+			<form id="emailAddressList" class="form" method="post" action="check-your-answers">
+			{% if data['emailaddresses'] and data['emailaddresses'].length %}
+				<div class="govuk-form-group">
+					<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+						<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+							<h2 class="govuk-fieldset__heading">
+								List of email addresses
+							</h2>
+						</legend>
+						<div class="govuk-form-group">
+						{% for emailaddress in data['emailaddresses'] %}
+							<p>{{emailaddress}}</p>
+						{% endfor %}
+						</div>
+					</fieldset>
+				</div>
+			{% endif %}
+			</form>
+      		<form class="form" method="post" action="add_emailaddress">
 			<div class="govuk-form-group">
-				<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
-					<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-						<h2 class="govuk-fieldset__heading">
-							List of email addresses
-						</h2>
-                    </legend>
-                    <div class="govuk-form-group">
-                    {% for emailaddress in data['emailaddresses'] %}
-                        <p>{{emailaddress}}</p>
-                    {% endfor %}
-                    </div>
-				</fieldset>
-            </div>
-        {% endif %}
-        </form>
-      	<form class="form" method="post" action="add_emailaddress">
-			<div class="govuk-form-group">
-				<label class="govuk-label" for="email-address">
+				<label class="govuk-label" for="emailaddressToAdd">
 					Email Address
 				</label>
-                <input class="govuk-input" id="emailaddressToAdd" name="emailaddressToAdd" type="text">
-                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                    Add
-                </button>
-			</div> 
+                <input class="govuk-input" id="emailaddressToAdd" name="emailaddressToAdd" type="text" />
+				<button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+					Add
+				</button>
+			</div>
         </form>
-        <button class="govuk-button" data-module="govuk-button" form="emailAddressList">Continue</button>
-        </div>
+        	<button class="govuk-button" data-module="govuk-button" form="emailAddressList">Continue</button>
 	</div>
 </div>
 {% endblock %}
