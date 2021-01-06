@@ -9,58 +9,67 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-			Tell us who to send the travel alert to
+			Tell us who to send the emergency alerts to
 		</h1>
 		<form class="form" method="post" action="friends-and-family">
 
 			<div class="govuk-form-group">
-				<label class="govuk-label" for="email-address">
+				<label class="govuk-label" for="first-name">
 					First name
 				</label>
 				<input class="govuk-input" id="first-name" name="firstName" type="text" value="{{data['firstName']}}">
 			</div>
-
-			<div class="govuk-checkboxes" data-module="govuk-checkboxes">
-				<div class="govuk-checkboxes__item">
-					{% if data['emailAddress'] %}
-					  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact" checked>
-					{% else %}
-					  <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
-				  	{% endif %}
-				  <label class="govuk-label govuk-checkboxes__label" for="contact">
-					Alert me by Email
-				  </label>
-				</div>
-				<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
-				  <div class="govuk-form-group">
-					<label class="govuk-label" for="contact-by-email">
-					  Email address
-					</label>
-					<input class="govuk-input govuk-!-width-one-third" id="emailAddress" name="emailAddress" type="email" spellcheck="false" value="{{data['emailAddress']}}">
-				</div>
-			</div>
-			<div class="govuk-checkboxes" data-module="govuk-checkboxes">
-				<div class="govuk-checkboxes__item">
-					{% if data['phoneNumber'] %}
-					<input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3" checked>
-					{% else %}
-					<input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3">
-					{% endif %}
-					<label class="govuk-label govuk-checkboxes__label" for="contact-3">
-					Alert me by Text
-					</label>
-				</div>
-				<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-3">
-					<div class="govuk-form-group">
-					<label class="govuk-label" for="contact-by-text">
-						Mobile phone number
-					</label>
-					<input class="govuk-input govuk-!-width-one-third" id="phoneNumber" name="phoneNumber" type="tel" value="{{data['phoneNumber']}}">
+			<div class="govuk-form-group">
+				<div class="govuk-checkboxes" data-module="govuk-checkboxes">
+					<div class="govuk-checkboxes__item">
+						{% if data['emailAddress'] %}
+						<input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email"
+							   data-aria-controls="conditional-contact" checked>
+						{% else %}
+						<input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email"
+							   data-aria-controls="conditional-contact">
+						{% endif %}
+						<label class="govuk-label govuk-checkboxes__label" for="contact">
+							Alert me by Email
+						</label>
+					</div>
+					<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+						 id="conditional-contact">
+						<div class="govuk-form-group">
+							<label class="govuk-label" for="emailAddress">
+								Email address
+							</label>
+							<input class="govuk-input govuk-!-width-one-third" id="emailAddress" name="emailAddress"
+								   type="email" spellcheck="false" value="{{data['emailAddress']}}">
+						</div>
+					</div>
+					<div class="govuk-checkboxes" data-module="govuk-checkboxes">
+						<div class="govuk-checkboxes__item">
+							{% if data['phoneNumber'] %}
+							<input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox"
+								   value="text message" data-aria-controls="conditional-contact-3" checked>
+							{% else %}
+							<input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox"
+								   value="text message" data-aria-controls="conditional-contact-3">
+							{% endif %}
+							<label class="govuk-label govuk-checkboxes__label" for="contact-3">
+								Alert me by Text
+							</label>
+						</div>
+						<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+							 id="conditional-contact-3">
+							<div class="govuk-form-group">
+								<label class="govuk-label" for="contact-by-text">
+									Mobile phone number
+								</label>
+								<input class="govuk-input govuk-!-width-one-third" id="phoneNumber" name="phoneNumber"
+									   type="tel" value="{{data['phoneNumber']}}">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<button class="govuk-button" data-module="govuk-button">Continue</button>
-
 		</form>
 	</div>
 </div>
