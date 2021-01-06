@@ -49,4 +49,23 @@ router.post('/confirmation', (req, res) => {
   res.redirect('/confirmation');
 });
 
+router.post('/sms_send', (req, res) => {
+  const { message, phoneNumber } = req.session.data;
+  const options = {
+    personalisation: {
+      'countries': ['Spain'],
+      message
+    }
+  };
+  notify.sendSms(
+    'baccbf59-9f54-4f69-a914-ad84e5cc181a',
+    phoneNumber,
+    options
+  )
+
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+  res.redirect('/sms_2');
+});
+
 module.exports = router
