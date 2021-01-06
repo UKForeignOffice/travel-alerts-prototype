@@ -40,14 +40,14 @@ router.post('/confirmation', (req, res) => {
       '349ec5ea-b7b5-4401-8a6e-3293aef13818',
       // `emailAddress` here needs to match the name of the form field in
       // your HTML page
-      req.session.data.emailAddress,
+      emailAddress,
       options
     );
   }
   if (phoneNumber) {
     notify.sendSms(
       'f8ff65b3-d33b-4649-bfe4-f19500f25c4a',
-      req.session.data.phoneNumber,
+      phoneNumber,
       options
     )
   }
@@ -74,6 +74,16 @@ router.post('/sms_send', (req, res) => {
   // This is the URL the users will be redirected to once the email
   // has been sent
   res.redirect('/sms_2');
+});
+
+router.post('/email_send', (req, res) => {
+  const { emailAddress } = req.session.data;
+  notify.sendEmail(
+    '340db034-9438-49e6-a4f2-cd3d4cf1bece',
+    emailAddress
+  );
+
+  res.redirect('/email_alert');
 });
 
 module.exports = router
