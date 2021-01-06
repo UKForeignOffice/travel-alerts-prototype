@@ -9,35 +9,41 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-			Add friends and family
+            Optional - invite friends and family to subscribe
         </h1>
-        <p>Invite friends and family to receive emergency alerts relating to your location overseas</p>
-		<form class="form" method="post" action="check-your-answers">
+        <p>You can invite other people to subscribe to emergency alerts for the countries you've selected, by entering their email addresses here.</p>
+        {% if data['emailaddresses'] and data['emailaddresses'].length %}
+		<form id="emailAddressList" class="form" method="post" action="check-your-answers">
+			<div class="govuk-form-group">
+				<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+					<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+						<h2 class="govuk-fieldset__heading">
+							List of email addresses
+						</h2>
+                    </legend>
+                    <div class="govuk-form-group">
+                    {% for emailaddress in data['emailaddresses'] %}
+                        <p>{{emailaddress}}</p>
+                    {% endfor %}
+                    </div>
+                    </form>
+				</fieldset>
+            </div>
+        </form>
+		{% endif %}
+      	<form class="form" method="post" action="add_emailaddress">
 			<div class="govuk-form-group">
 				<label class="govuk-label" for="email-address">
 					Email Address
 				</label>
-				<input class="govuk-input" id="friend1_email" name="friend1_email" type="text" value="{{data['friend1_email']}}">
-			</div>
-
-			<div class="govuk-form-group">
-				<label class="govuk-label" for="email-address">
-					Email Address
-				</label>
-				<input class="govuk-input" id="friend2_email" name="friend2_email" type="text" value="{{data['friend2_email']}}">
-			</div>
-
-			<div class="govuk-form-group">
-				<label class="govuk-label" for="phone-number">
-				    Email Address
-				</label>
-				<input class="govuk-input" id="friend3_email" name="friend3_email" type="text" value="{{data['friend3_email']}}">
-			</div>
-
-			<button class="govuk-button" data-module="govuk-button">Continue</button>
-
-
-		</form>
+                <input class="govuk-input" id="emailaddressToAdd" name="emailaddressToAdd" type="text">
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Add
+                </button>
+			</div> 
+        </form>
+        <button class="govuk-button" data-module="govuk-button" form="emailAddressList">Continue</button>
+        </div>
 	</div>
 </div>
 {% endblock %}

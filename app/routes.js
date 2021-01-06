@@ -6,6 +6,14 @@ const NotifyClient = require('notifications-node-client').NotifyClient,
 
 // Add your routes here - above the module.exports line
 
+router.use('/add_emailaddress', (req, res) => {
+  const { emailaddresses = [], emailaddressToAdd } = req.session.data;
+  if (!emailaddresses.includes(emailaddressToAdd)) {
+    req.session.data.emailaddresses = [...emailaddresses, emailaddressToAdd].sort();
+  }
+  res.redirect('/friends-and-family');
+});
+
 router.use('/add_country', (req, res) => {
   const { countries = [], countryToAdd, fullCountryNames } = req.session.data;
   if (!countries.includes(countryToAdd)) {
