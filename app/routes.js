@@ -56,7 +56,7 @@ router.post('/confirmation', (req, res) => {
   res.redirect('/confirmation');
 });
 
-router.post('/sms_send', (req, res) => {
+router.post('/sms_send_free_text', (req, res) => {
   const { message, phoneNumber } = req.session.data;
   const options = {
     personalisation: {
@@ -69,9 +69,15 @@ router.post('/sms_send', (req, res) => {
     phoneNumber,
     options
   )
+  res.redirect('/sms_2');
+});
 
-  // This is the URL the users will be redirected to once the email
-  // has been sent
+router.post('/sms_send', (req, res) => {
+  const { phoneNumber } = req.session.data;
+  notify.sendSms(
+    '68352961-fcc9-451a-9f39-ce98d53b8408',
+    phoneNumber
+  )
   res.redirect('/sms_2');
 });
 
