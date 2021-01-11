@@ -14,7 +14,7 @@
 
       <h1 class="govuk-heading-xl">Confirm your details before subscribing</h1>
 
-      <h2 class="govuk-heading-m">Personal details</h2>
+      <h2 class="govuk-heading-m">Where we will send the alerts</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -22,7 +22,6 @@
             Contact Details
           </dt>
           <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{data['firstName']}}</p>
               <p class="govuk-body">{{data['emailAddress']}}</p>
               <p class="govuk-body">{{data['phoneNumber']}}</p>
           </dd>
@@ -32,16 +31,17 @@
             </a>
           </dd>
         </div>
+		  {% if data['emailaddresses'] and data['emailaddresses'].length %}
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Friends and Family
             </dt>
             <dd class="govuk-summary-list__value">
-                {% if data['emailaddresses'] and data['emailaddresses'].length %}
+
                   {% for emailaddress in data['emailaddresses'] %}
                     <p class="govuk-body">{{emailaddress}}</p>
                   {% endfor %}
-			          {% endif %}
+
             </dd>
             <dd class="govuk-summary-list__actions">
               <a href="friends-and-family">
@@ -49,6 +49,7 @@
               </a>
             </dd>
           </div>
+		  {% endif %}
       </dl>
 
       <h2 class="govuk-heading-m">Countries to receive alerts for</h2>
@@ -74,7 +75,7 @@
         </div>
       </dl>
 
-      <h2 class="govuk-heading-m">Now send your subscription request</h2>
+      <p>If you're happy with these details, click the button to subscribe.</p>
 
       <form action="/confirmation" method="post" novalidate>
 

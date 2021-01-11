@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="country">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Sample email alert
+		</h1>
+		<form class="form" method="post" action="email_send">
+			<div class="govuk-form-group">
+				<label class="govuk-label" for="emailAddress">
+					Email address to send to
+				</label>
+				<input class="govuk-input govuk-!-width-one-third" id="emailAddress" name="emailAddress"
+					   type="email" spellcheck="false" value="{{data['emailAddress']}}">
+			</div>
+
+			<button class="govuk-button" data-module="govuk-button">Continue</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
