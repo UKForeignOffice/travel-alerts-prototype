@@ -21,22 +21,31 @@
 							List of email addresses
 						</h2>
                     </legend>
-                    <div class="govuk-form-group">
-                    {% for emailaddress in data['emailaddresses'] %}
-                        <p>{{emailaddress}}</p>
-                    {% endfor %}
-                    </div>
 				</fieldset>
             </div>
         {% endif %}
         </form>
-      	<form class="form" method="post" action="add_emailaddress">
+        {% if data['emailaddresses'] and data['emailaddresses'].length %}
+        <form id="removeemailaddress" class="form" method="post" action="remove_emailaddress"></form>
+        <div class="govuk-form-group">
+            {% for emailaddress in data['emailaddresses'] %}
+                <p>{{emailaddress}}
+                <a href="/remove_emailaddress?email={{emailaddress}}"><button class="govuk-button  govuk-button--secondary" data-module="govuk-button">
+                    Remove
+                </button>
+                </a>
+                </p>
+            {% endfor %}
+        </div>
+        </form>    
+		{% endif %}
+      	<form id="addEmailAddress" class="form" method="post" action="add_emailaddress">
 			<div class="govuk-form-group">
 				<label class="govuk-label" for="email-address">
 					Email Address
 				</label>
                 <input class="govuk-input" id="emailaddressToAdd" name="emailaddressToAdd" type="text">
-                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button" form="addEmailAddress">
                     Add
                 </button>
 			</div> 
@@ -46,3 +55,4 @@
 	</div>
 </div>
 {% endblock %}
+

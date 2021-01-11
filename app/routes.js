@@ -6,6 +6,15 @@ const NotifyClient = require('notifications-node-client').NotifyClient,
 
 // Add your routes here - above the module.exports line
 
+
+router.use('/remove_emailaddress', (req, res) => {
+  const { emailaddresses = [] } = req.session.data;
+  let itemsToBeRemoved = req.query.email
+  var filteredArray = emailaddresses.filter(item => !itemsToBeRemoved.includes(item))
+  req.session.data.emailaddresses = filteredArray
+  res.redirect('/friends-and-family');  
+});
+
 router.use('/add_emailaddress', (req, res) => {
   const { emailaddresses = [], emailaddressToAdd } = req.session.data;
   if (!emailaddresses.includes(emailaddressToAdd)) {
