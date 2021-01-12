@@ -9,9 +9,9 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column">
 		<h1 class="govuk-heading-xl">
-			Choose which countries you'd like to get emergency alerts for
+			Which countries do you want to receive emergency alerts for?
 		</h1>
-			{% if data['countries'] and data['countries'].length %}
+		{% if data['countries'] and data['countries'].length %}
 		<form id="countryList" class="form" method="post" action="name_email">
 			<div class="govuk-form-group">
 				<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
@@ -23,7 +23,8 @@
 					<div class="govuk-checkboxes">
 						{% for country in data['countries'] %}
 						<div class="govuk-checkboxes__item">
-							<input class="govuk-checkboxes__input" id="country" name="countries" type="checkbox" value="{{country}}" checked>
+							<input class="govuk-checkboxes__input" id="country" name="countries" type="checkbox"
+								   value="{{country}}" checked>
 							<label class="govuk-label govuk-checkboxes__label" for="country">
 								{{country}}
 							</label>
@@ -35,24 +36,43 @@
 			</div>
 		</form>
 		{% endif %}
-		<form class="form" method="post" action="add_country">
-			<div class="govuk-form-group">
-				<label class="govuk-label" for="countryToAdd">
-					{% if data['countries'] and data['countries'].length %}
-					Add another country
-					{% else %}
-					Choose a country
-					{% endif %}
-				</label>
-				<select class="govuk-select" id="countryToAdd" name="countryToAdd">
-					{% for country in data['availableCountries'] %}
-					<option value="{{country}}">{{country}}</option>
-					{% endfor %}
-				</select>
-				<button class="govuk-button" data-module="govuk-button">Add</button>
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-one-half-from-desktop">
+				<form class="form" method="post" action="add_country" id="addCountryForm">
+					<div class="govuk-form-group">
+						<h2 class="govuk-heading-m">{% if data['countries'] and data['countries'].length %}
+							Add another country
+							{% else %}
+							Choose a country
+							{% endif %}</h2>
+						<label class="govuk-label" for="countryToAdd">
+							Type or select a country from the list, then press Add to List
+						</label>
+						<select class="govuk-select" id="countryToAdd" name="countryToAdd">
+							<option value="">Select a country</option>
+							{% for country in data['availableCountries'] %}
+							<option value="{{country}}">{{country}}</option>
+							{% endfor %}
+						</select>
+						<div id="my-autocomplete-container"></div>
+						<button class="govuk-button" data-module="govuk-button">Add to list</button>
+					</div>
+				</form>
 			</div>
-		</form>
+		</div>
+		<p>When you've finished adding countries, press Continue.</p>
 		<button class="govuk-button" data-module="govuk-button" form="countryList">Continue</button>
 	</div>
 </div>
+<link rel="stylesheet" href="/public/javascripts/accessible-autocomplete.min.css" />
+<script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script>
+  accessibleAutocomplete.enhanceSelectElement({
+    defaultValue: '',
+	autoSelect: true,
+    selectElement: document.querySelector('#countryToAdd'),
+	showAllValues: true,
+    displayMenu: 'overlay',
+  })
+</script>
 {% endblock %}
