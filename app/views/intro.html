@@ -30,10 +30,10 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        {% if serviceName %} {{ serviceName }} {% endif %}
+		  Subscribe to Emergency Alerts{% if data['countries'] and data['countries'].length %} for {{data['countries'].join(', ')}}{% endif %}
       </h1>
 
-		<p>Use this service to subscribe to emergency alerts for your chosen countries.</p>
+		<p>Use this service to subscribe to emergency alerts via email and/or SMS for your chosen countries.</p>
 
       <p>Registering takes around 2 minutes.</p>
 
@@ -46,11 +46,9 @@
 
       <h2 class="govuk-heading-m">Before you start</h2>
 
-      <p>You can also <a href="#">register by post</a>.</p>
+      <p>This service is available to British nationals only.</p>
 
       <p>The online service is also available in <a href="#">Welsh (Cymraeg)</a>.</p>
-
-      <p>You can’t register for this service if you’re in the UK illegally.</p>
 
     </div>
 

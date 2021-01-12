@@ -12,7 +12,7 @@ router.use('/remove_emailaddress', (req, res) => {
   let itemsToBeRemoved = req.query.email
   var filteredArray = emailaddresses.filter(item => !itemsToBeRemoved.includes(item))
   req.session.data.emailaddresses = filteredArray
-  res.redirect('/friends-and-family');  
+  res.redirect('/friends-and-family');
 });
 
 router.use('/add_emailaddress', (req, res) => {
@@ -29,6 +29,9 @@ router.use('/add_country', (req, res) => {
     req.session.data.countries = [...countries, countryToAdd].sort();
   }
   req.session.data.availableCountries = fullCountryNames.filter(country => !req.session.data.countries.includes(country));
+  if (req.query.countryToAdd) {
+    return res.redirect('/intro');
+  }
   res.redirect('/country');
 });
 

@@ -24,5 +24,5 @@ const fullCountryNames = Object.values(fullCountryList).map(country => country.i
 module.exports = {
   fullCountryNames,
   availableCountries: fullCountryNames,
-  countries: ['Thailand']
+  countries: []
 }
