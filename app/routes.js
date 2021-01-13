@@ -4,8 +4,12 @@ const router = express.Router()
 const NotifyClient = require('notifications-node-client').NotifyClient,
   notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
-// Add your routes here - above the module.exports line
-
+router.post('/is-british-national', (req, res) => {
+  if (req.session.data['is-british-national'] === 'yes') {
+    return res.redirect('/country');
+  }
+  res.redirect('/not-british-national');
+});
 
 router.use('/remove_emailaddress', (req, res) => {
   const { emailaddresses = [] } = req.session.data;
