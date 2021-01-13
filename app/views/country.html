@@ -12,7 +12,7 @@
 			Which countries do you want to receive emergency alerts for?
 		</h1>
 		{% if data['countries'] and data['countries'].length %}
-		<form id="countryList" class="form" method="post" action="name_email">
+		<form id="countryList" class="form" method="post" action="email_sms">
 			<div class="govuk-form-group">
 				<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
 					<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -69,10 +69,13 @@
 <script>
   accessibleAutocomplete.enhanceSelectElement({
     defaultValue: '',
-	autoSelect: true,
     selectElement: document.querySelector('#countryToAdd'),
 	showAllValues: true,
-    displayMenu: 'overlay',
+    displayMenu: 'overlay'
+  });
+  document.querySelector('.autocomplete__dropdown-arrow-down').addEventListener('click', function() {
+    document.querySelector('#countryToAdd').click();
+    document.querySelector('#countryToAdd').focus();
   })
 </script>
 {% endblock %}
