@@ -9,7 +9,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-            Optional - invite friends and family to subscribe
+            Do you want to invite friends and family to subscribe?
         </h1>
         <p>You can invite other people to subscribe to emergency alerts for the countries you've selected, by entering their email addresses here.</p>
         <form id="emailAddressList" class="form" method="post" action="check-your-answers">
@@ -37,7 +37,7 @@
                 </p>
             {% endfor %}
         </div>
-        </form>    
+        </form>
 		{% endif %}
       	<form id="addEmailAddress" class="form" method="post" action="add_emailaddress">
 			<div class="govuk-form-group">
@@ -48,7 +48,7 @@
                 <button class="govuk-button govuk-button--secondary" data-module="govuk-button" form="addEmailAddress">
                     Add
                 </button>
-			</div> 
+			</div>
         </form>
         <button class="govuk-button" data-module="govuk-button" form="emailAddressList">Continue</button>
         </div>
