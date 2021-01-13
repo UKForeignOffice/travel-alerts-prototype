@@ -11,16 +11,23 @@ router.post('/is-british-national', (req, res) => {
 });
 
 
-/*
+
 router.post('/is-check-your-answers', (req, res) => {
-  if (req.session.data['invite'] === 'yes') {
-    return res.redirect('/check-your-answers');
+  const { emailaddresses = [], emailaddressToAdd } = req.session.data;
+  if(emailaddressToAdd != '') {
+    if (!emailaddresses.includes(emailaddressToAdd)) {
+      req.session.data.emailaddresses = [...emailaddresses, emailaddressToAdd].sort();
+    }
+    res.redirect('/friends-and-family');
   } else {
-    req.session.data.emailaddresses = []
-    return res.redirect('/check-your-answers');
+    if (req.session.data['invite'] === 'yes') {
+      return res.redirect('/check-your-answers');
+    } else {
+      req.session.data.emailaddresses = []
+      return res.redirect('/check-your-answers');
+    }
   }
 });
-*/
 
 router.use('/remove_emailaddress', (req, res) => {
   const { emailaddresses = [] } = req.session.data;

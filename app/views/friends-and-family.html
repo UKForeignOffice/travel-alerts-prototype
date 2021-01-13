@@ -12,6 +12,7 @@
 		<h1 class="govuk-heading-xl">
             Do you want to invite friends and family to subscribe ?
         </h1>
+        <form id="emailAddressList" class="form" method="post" action="is-check-your-answers">
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
@@ -28,7 +29,7 @@
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes">
                         <div class="govuk-form-group">
                                 <p>You can invite other people to subscribe to emergency alerts for the countries you've selected, by entering their email addresses here.</p>
-                                <form id="emailAddressList" class="form" method="post" action="check-your-answers">
+                                
                                 {% if data['emailaddresses'] and data['emailaddresses'].length %}
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
@@ -45,25 +46,24 @@
                                 <div class="govuk-form-group">
                                     {% for emailaddress in data['emailaddresses'] %}
                                         <p>{{emailaddress}}
-                                        <a href="/remove_emailaddress?email={{emailaddress}}"><button class="govuk-button  govuk-button--secondary" data-module="govuk-button">
+                                        <a href="/remove_emailaddress?email={{emailaddress}}">
                                             Remove
-                                        </button>
                                         </a>
                                         </p>
                                     {% endfor %}
                                 </div>
                                 {% endif %}
-                                <form id="addEmailAddress" class="form" method="post" action="add_emailaddress">
+                                
                                     <div class="govuk-form-group">
                                         <label class="govuk-label" for="email-address">
                                             Email Address
                                         </label>
                                         <input class="govuk-input" id="emailaddressToAdd" name="emailaddressToAdd" type="text">
-                                        <button class="govuk-button govuk-button--secondary" data-module="govuk-button" form="addEmailAddress">
+                                        <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
                                             Add another
                                         </button>
                                     </div> 
-                                </form>
+                                
                         </div>
                     </div>
                     <div class="govuk-radios__item">
@@ -76,6 +76,7 @@
             </fieldset>
         </div>
         <button class="govuk-button" data-module="govuk-button" form="emailAddressList">Continue</button>
+        </form>
 	</div>
 </div>
 {% endblock %}
