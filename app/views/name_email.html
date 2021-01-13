@@ -46,7 +46,7 @@
 								   value="text message" data-aria-controls="conditional-contact-3">
 							{% endif %}
 							<label class="govuk-label govuk-checkboxes__label" for="contact-3">
-								Alert me by Text
+								Alert me by SMS
 							</label>
 						</div>
 						<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
@@ -55,8 +55,11 @@
 								<label class="govuk-label" for="contact-by-text">
 									Mobile phone number
 								</label>
+								<div id="telephone-number-hint" class="govuk-hint">
+									For international numbers include the country code eg 001
+								</div>
 								<input class="govuk-input govuk-!-width-one-third" id="phoneNumber" name="phoneNumber"
-									   type="tel" value="{{data['phoneNumber']}}">
+									   type="tel" value="{{data['phoneNumber']}}" aria-describedby="telephone-number-hint" autocomplete="tel">
 							</div>
 						</div>
 					</div>
