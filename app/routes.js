@@ -1,4 +1,3 @@
-
 const express = require('express')
 const router = express.Router()
 const NotifyClient = require('notifications-node-client').NotifyClient,
@@ -10,6 +9,18 @@ router.post('/is-british-national', (req, res) => {
   }
   res.redirect('/not-british-national');
 });
+
+
+/*
+router.post('/is-check-your-answers', (req, res) => {
+  if (req.session.data['invite'] === 'yes') {
+    return res.redirect('/check-your-answers');
+  } else {
+    req.session.data.emailaddresses = []
+    return res.redirect('/check-your-answers');
+  }
+});
+*/
 
 router.use('/remove_emailaddress', (req, res) => {
   const { emailaddresses = [] } = req.session.data;
