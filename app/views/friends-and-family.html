@@ -10,7 +10,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-            Do you want to invite friends and family to subscribe ?
+            Do you want to invite friends and family to subscribe to alerts?
         </h1>
         <form id="emailAddressList" class="form" method="post" action="is-check-your-answers">
         <div class="govuk-form-group">
@@ -29,7 +29,7 @@
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-yes">
                         <div class="govuk-form-group">
                                 <p>You can invite other people to subscribe to emergency alerts for the countries you've selected, by entering their email addresses here.</p>
-                                
+
                                 {% if data['emailaddresses'] and data['emailaddresses'].length %}
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
@@ -53,7 +53,7 @@
                                     {% endfor %}
                                 </div>
                                 {% endif %}
-                                
+
                                     <div class="govuk-form-group">
                                         <label class="govuk-label" for="email-address">
                                             Email Address
@@ -62,8 +62,8 @@
                                         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
                                             Add another
                                         </button>
-                                    </div> 
-                                
+                                    </div>
+
                         </div>
                     </div>
                     <div class="govuk-radios__item">
