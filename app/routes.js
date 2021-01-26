@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const NotifyClient = require('notifications-node-client').NotifyClient,
   notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+const saveSubscription = require('./save-subscription');
 
 router.post('/is-british-national', (req, res) => {
   if (req.session.data['is-british-national'] === 'yes') {
@@ -58,10 +59,10 @@ router.use('/add_country', (req, res) => {
 });
 
 router.post('/confirmation', (req, res) => {
-  const { emailAddress, phoneNumber } = req.session.data;
+  const { emailAddress, phoneNumber, countries } = req.session.data;
   const options = {
     personalisation: {
-      'countries': req.session.data.countries
+      countries
     }
   };
 
@@ -76,6 +77,7 @@ router.post('/confirmation', (req, res) => {
       emailAddress,
       options
     );
+    saveSubscription({ senderId: emailAddress, countries, channel: 'EMAIL' });
   }
   if (phoneNumber) {
     notify.sendSms(
@@ -83,6 +85,7 @@ router.post('/confirmation', (req, res) => {
       phoneNumber,
       options
     )
+    saveSubscription({ senderId: phoneNumber, countries, channel: 'SMS' });
   }
 
   // This is the URL the users will be redirected to once the email
