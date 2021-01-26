@@ -9,5 +9,7 @@ module.exports = ({ senderId, countries, channel }) => {
       'Content-Type': 'application/json'
     },
   })
+    .then(() =>
+      console.log(`${channel} subscription saved to ${process.env.SEND_ALERT_APP_ENDPOINT}`))
     .catch(err => console.error(err));
 }
