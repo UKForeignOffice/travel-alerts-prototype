@@ -12,25 +12,56 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-xl">Confirm your details before subscribing</h1>
+      <h1 class="govuk-heading-xl">Confirm your details</h1>
 
       <h2 class="govuk-heading-m">Where we will send the alerts</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+		  {% if data['emailAddress'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Contact Details
+            Email
           </dt>
           <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{data['emailAddress']}}</p>
-              <p class="govuk-body">{{data['phoneNumber']}}</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="email_sms">
+            <a href="choose_channels">
               Change
             </a>
           </dd>
         </div>
+		  {% endif %}
+		  {% if data['phoneNumber'] %}
+		  <div class="govuk-summary-list__row">
+			  <dt class="govuk-summary-list__key">
+				  SMS
+			  </dt>
+			  <dd class="govuk-summary-list__value">
+				  <p class="govuk-body">{{data['phoneNumber']}}</p>
+			  </dd>
+			  <dd class="govuk-summary-list__actions">
+				  <a href="choose_channels">
+					  Change
+				  </a>
+			  </dd>
+		  </div>
+		  {% endif %}
+		  {% if 'whatsapp' in data['channels'] %}
+		  <div class="govuk-summary-list__row">
+			  <dt class="govuk-summary-list__key">
+				  WhatsApp
+			  </dt>
+			  <dd class="govuk-summary-list__value">
+				  <p class="govuk-body">To complete your subscription, follow the instructions that will be shown after you click Confirm, below</p>
+			  </dd>
+			  <dd class="govuk-summary-list__actions">
+				  <a href="choose_channels">
+					  Change
+				  </a>
+			  </dd>
+		  </div>
+		  {% endif %}
 		  {% if data['emailaddresses'] and data['emailaddresses'].length %}
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -75,14 +106,12 @@
         </div>
       </dl>
 
-      <p>If you're happy with these details, click the button to subscribe.</p>
-
       <form action="/confirmation" method="post" novalidate>
 
         <input type="hidden" name="answers-checked" value="true">
 
         <button type="submit" class="govuk-button" data-module="govuk-button">
-          Subscribe to alerts
+          Confirm
         </button>
 
       </form>

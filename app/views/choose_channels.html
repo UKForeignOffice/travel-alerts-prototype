@@ -11,19 +11,30 @@
 		<h1 class="govuk-heading-xl">
 			Tell us where to send the emergency alerts
 		</h1>
+
+		<details class="govuk-details" data-module="govuk-details">
+			<summary class="govuk-details__summary">
+				<span class="govuk-details__summary-text">
+				  Consider selecting more than one
+				</span>
+			</summary>
+			<div class="govuk-details__text">
+				Selecting more than one option could help ensure you receive an alert in the event of an emergency. For example, if you are travelling to a location where internet access or mobile networks might be unreliable, consider subscribing to both an internet-based service (email, WhatsApp) as well as SMS.
+			</div>
+		</details>
 		<form class="form" method="post" action="friends-and-family">
 			<div class="govuk-form-group">
 				<div class="govuk-checkboxes" data-module="govuk-checkboxes">
 					<div class="govuk-checkboxes__item">
 						{% if data['emailAddress'] %}
-						<input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email"
+						<input class="govuk-checkboxes__input" name="channels" type="checkbox" value="email"
 							   data-aria-controls="conditional-contact" checked>
 						{% else %}
-						<input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email"
+						<input class="govuk-checkboxes__input" name="channels" type="checkbox" value="email"
 							   data-aria-controls="conditional-contact">
 						{% endif %}
-						<label class="govuk-label govuk-checkboxes__label" for="contact">
-							Alert me by Email
+						<label class="govuk-label govuk-checkboxes__label">
+							Email
 						</label>
 					</div>
 					<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
@@ -39,29 +50,44 @@
 					<div class="govuk-checkboxes" data-module="govuk-checkboxes">
 						<div class="govuk-checkboxes__item">
 							{% if data['phoneNumber'] %}
-							<input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox"
-								   value="text message" data-aria-controls="conditional-contact-3" checked>
+							<input class="govuk-checkboxes__input" name="channels" type="checkbox"
+								   value="sms" data-aria-controls="conditional-contact-3" checked>
 							{% else %}
-							<input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox"
-								   value="text message" data-aria-controls="conditional-contact-3">
+							<input class="govuk-checkboxes__input" name="channels" type="checkbox"
+								   value="sms" data-aria-controls="conditional-contact-3">
 							{% endif %}
 							<label class="govuk-label govuk-checkboxes__label" for="contact-3">
-								Alert me by SMS
+								SMS
 							</label>
 						</div>
 						<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
 							 id="conditional-contact-3">
 							<div class="govuk-form-group">
-								<label class="govuk-label" for="contact-by-text">
+								<label class="govuk-label" >
 									Mobile phone number
 								</label>
 								<div id="telephone-number-hint" class="govuk-hint">
-									For international numbers include the country code eg 001
+									For international numbers include the country code
 								</div>
 								<input class="govuk-input govuk-!-width-one-third" id="phoneNumber" name="phoneNumber"
 									   type="tel" value="{{data['phoneNumber']}}" aria-describedby="telephone-number-hint" autocomplete="tel">
 							</div>
 						</div>
+					</div>
+
+					<div class="govuk-checkboxes__item">
+						{% if 'whatsapp' in data['channels'] %}
+						<input class="govuk-checkboxes__input" name="channels" type="checkbox" value="whatsapp" checked data-aria-controls="conditional-whatsapp">
+						{% else %}
+						<input class="govuk-checkboxes__input" name="channels" type="checkbox" value="whatsapp" data-aria-controls="conditional-whatsapp">
+						{% endif %}
+						<label class="govuk-label govuk-checkboxes__label">
+							WhatsApp
+						</label>
+					</div>
+					<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+						 id="conditional-whatsapp">
+						<p>To complete subscription for WhatsApp messages you'll need to do an extra step - we'll show you details later on.</p>
 					</div>
 				</div>
 			</div>
