@@ -27,15 +27,24 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column">
 
       <h1 class="govuk-heading-xl">
-		  Subscribe to Emergency Alerts{% if data['countries'] and data['countries'].length %} for {{data['countries'].join(', ')}}{% endif %}
+		  Subscribe to Travel Alerts{% if data['countries'] and data['countries'].length %} for {{data['countries'].join(', ')}}{% endif %}
       </h1>
 
-		<p>Use this service to subscribe to emergency alerts via email and/or SMS for your chosen countries.</p>
+		<p>Use this service to subscribe to Travel Alerts so that you are alerted to any new updates regarding:</p>
 
-      <p>Registering takes around 2 minutes.</p>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>Latest information on Coronavirus</li>
+			<li>Safety and security</li>
+			<li>Entry Requirements</li>
+			<li>Travel Warnings</li>
+			<li>Emergency Updates</li>
+		</ul>
+
+      <p>Registering takes around 5 minutes.</p>
 
       <a href="british-national" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">
         Start now
@@ -52,23 +61,5 @@
 
     </div>
 
-    <div class="govuk-grid-column-one-third">
-
-      <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Helpful information
-        </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a href="https://www.gov.uk/foreign-travel-advice">
-                Travel advice, for the country you're interested in
-              </a>
-			</li>
-          </ul>
-        </nav>
-      </aside>
-
-    </div>
   </div>
 {% endblock %}

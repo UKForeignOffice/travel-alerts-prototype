@@ -32,8 +32,8 @@ router.post('/is-check-your-answers', (req, res) => {
 
 router.use('/remove_emailaddress', (req, res) => {
   const { emailaddresses = [] } = req.session.data;
-  let itemsToBeRemoved = req.query.email
-  var filteredArray = emailaddresses.filter(item => !itemsToBeRemoved.includes(item))
+  const itemsToBeRemoved = req.query.email
+  const filteredArray = emailaddresses.filter(item => !itemsToBeRemoved.includes(item))
   req.session.data.emailaddresses = filteredArray
   res.redirect('/friends-and-family');
 });
