@@ -24,7 +24,7 @@
 				<p>You'll be able change these options later.</p>
 			</div>
 		</details>
-		<form class="form" method="post" action="channels_chosen">
+		<form class="form" method="post" action="check-your-answers">
 			<div class="govuk-form-group">
 				<div class="govuk-checkboxes" data-module="govuk-checkboxes">
 					<div class="govuk-checkboxes__item">
@@ -51,7 +51,7 @@
 					</div>
 					<div class="govuk-checkboxes" data-module="govuk-checkboxes">
 						<div class="govuk-checkboxes__item">
-							{% if 'sms' in data['channels'] and data['phoneNumber'] %}
+							{% if 'sms' in data['channels'] and data['phoneNumberSms'] %}
 							<input class="govuk-checkboxes__input" id="channels-sms" name="channels" type="checkbox"
 								   value="sms" data-aria-controls="conditional-contact-3" checked>
 							{% else %}
@@ -71,8 +71,8 @@
 								<div id="telephone-number-hint" class="govuk-hint">
 									For international numbers include the country code
 								</div>
-								<input class="govuk-input govuk-!-width-one-third" id="phoneNumber" name="phoneNumber"
-									   type="tel" value="{{data['phoneNumber']}}" aria-describedby="telephone-number-hint" autocomplete="tel">
+								<input class="govuk-input govuk-!-width-one-third" id="phoneNumberSms" name="phoneNumberSms"
+									   type="tel" value="{{data['phoneNumberSms']}}" aria-describedby="telephone-number-hint" autocomplete="tel">
 							</div>
 						</div>
 					</div>

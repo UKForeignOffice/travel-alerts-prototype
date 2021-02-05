@@ -22,10 +22,10 @@
         An email has been sent to {{data['emailAddress']}}, which includes a link for you to verify your email address.
       </p>
 		{% endif %}
-		{% if 'sms' in data['channels'] and data['phoneNumber'] %}
+		{% if 'sms' in data['channels'] and data['phoneNumberSms'] %}
 		<h2 class="govuk-heading-m">SMS</h2>
 		<p>
-			A message has been sent by SMS to {{data['phoneNumber']}}. Reply to it as directed in the message to verify your number.
+			A message has been sent by SMS to {{data['phoneNumberSms']}}. Reply to it as directed in the message to verify your number.
 		</p>
 		{% endif %}
 		{% if 'whatsapp' in data['channels'] %}

@@ -40,7 +40,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/confirmation', (req, res) => {
-  const { emailAddress, phoneNumber, countries, channels } = req.session.data;
+  const { emailAddress, phoneNumberSms, countries, channels } = req.session.data;
   const options = {
     personalisation: {
       countries
@@ -60,13 +60,13 @@ router.post('/confirmation', (req, res) => {
     );
     saveSubscription({ senderId: emailAddress, countries, channel: 'EMAIL' });
   }
-  if (channels.includes('sms') && phoneNumber) {
+  if (channels.includes('sms') && phoneNumberSms) {
     notify.sendSms(
       'f8ff65b3-d33b-4649-bfe4-f19500f25c4a',
-      phoneNumber,
+      phoneNumberSms,
       options
     )
-    saveSubscription({ senderId: phoneNumber, countries, channel: 'SMS' });
+    saveSubscription({ senderId: phoneNumberSms, countries, channel: 'SMS' });
   }
 
   // This is the URL the users will be redirected to once the email
