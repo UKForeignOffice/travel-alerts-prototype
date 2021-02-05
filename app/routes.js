@@ -3,6 +3,7 @@ const router = express.Router()
 const NotifyClient = require('notifications-node-client').NotifyClient,
   notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 const saveSubscription = require('./save-subscription');
+const defaultSessionData = require('./data/session-data-defaults');
 
 router.post('/is-british-national', (req, res) => {
   if (req.session.data['is-british-national'] === 'yes') {
@@ -33,9 +34,9 @@ router.use('/add_country', (req, res) => {
   res.redirect('/country');
 });
 
-router.post('/channels_chosen', (req, res) => {
-  const { channels } = req.session.data;
-  res.redirect('/check-your-answers');
+router.get('/', (req, res, next) => {
+  req.session.data = {...defaultSessionData};
+  next();
 });
 
 router.post('/confirmation', (req, res) => {
