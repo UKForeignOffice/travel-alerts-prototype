@@ -25,5 +25,6 @@ module.exports = {
   fullCountryNames,
   availableCountries: fullCountryNames,
   countries: [],
-  channels: []
+  channels: [],
+  typeofalert: []
 }

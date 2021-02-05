@@ -17,19 +17,19 @@
 			  <fieldset class="govuk-fieldset" aria-describedby="british-national-hint">
 				  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 					  <h1 class="govuk-heading-xl">
-						  What type of alerts are you interested in?
+						  Which types of update are you interested in?
 					  </h1>
 					</legend>
-					
+
 				  <div class="govuk-checkboxes">
 						<div class="govuk-checkboxes__item">
-							{%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Emergency updates only')%}
-							<input class="govuk-checkboxes__input" id="emergencyupdateonly" name="typeofalert" type="checkbox" value="Emergency updates only" checked>
+							{%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Emergency or incident in the country')%}
+							<input class="govuk-checkboxes__input" id="emergencyupdateonly" name="typeofalert" type="checkbox" value="Emergency or incident in the country" checked>
 							{%else%}
-							<input class="govuk-checkboxes__input" id="emergencyupdateonly" name="typeofalert" type="checkbox" value="Emergency updates only">
+							<input class="govuk-checkboxes__input" id="emergencyupdateonly" name="typeofalert" type="checkbox" value="Emergency or incident in the country">
 							{%endif%}
 							<label class="govuk-label govuk-checkboxes__label" for="emergencyupdateonly">
-								Emergency updates only
+								Emergency or incident in the country
 							</label>
 						</div>
 						<div class="govuk-checkboxes__item">
@@ -89,7 +89,7 @@
 							<input class="govuk-checkboxes__input" id="naturaldisaster" name="typeofalert" type="checkbox" value="Natural disaster">
 							{%endif%}
 							<label class="govuk-label govuk-checkboxes__label" for="naturaldisaster">
-								Natural disaster	
+								Natural disaster
 							</label>
 						</div>
 						<div class="govuk-checkboxes__item">

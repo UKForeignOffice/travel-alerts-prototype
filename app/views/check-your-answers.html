@@ -10,14 +10,14 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+    <div class="govuk-grid-column-three-quarters-from-desktop">
 
-      <h1 class="govuk-heading-xl">Confirm your details</h1>
+      <h1 class="govuk-heading-xl">Confirm your choices</h1>
 
-      <h2 class="govuk-heading-m">Where we will send the alerts</h2>
+      <h2 class="govuk-heading-m">Where we will send the updates</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-		  {% if data['emailAddress'] %}
+		  {% if 'email' in data['channels'] and data['emailAddress'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Email
@@ -32,7 +32,7 @@
           </dd>
         </div>
 		  {% endif %}
-		  {% if data['phoneNumber'] %}
+		  {% if 'sms' in data['channels'] and data['phoneNumber'] %}
 		  <div class="govuk-summary-list__row">
 			  <dt class="govuk-summary-list__key">
 				  SMS
@@ -53,7 +53,7 @@
 				  WhatsApp
 			  </dt>
 			  <dd class="govuk-summary-list__value">
-				  <p class="govuk-body">To complete your subscription, follow the instructions that will be shown after you click Confirm, below</p>
+				  <p class="govuk-body">To complete your subscription, follow the instructions after you click Confirm</p>
 			  </dd>
 			  <dd class="govuk-summary-list__actions">
 				  <a href="choose_channels">
@@ -83,19 +83,17 @@
 		  {% endif %}
       </dl>
 
-      <h2 class="govuk-heading-m">Type of alerts interested</h2>
+      <h2 class="govuk-heading-m">Types of updates</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Type of alerts
+            Types
           </dt>
           <dd class="govuk-summary-list__value">
-			  {% if data['typeofalert'] and data['typeofalert'].length %}
-			  {{data['typeofalert'].join(', ')}}
-			  {% else %}
-			  None selected
-			  {% endif %}
+			  {% for type in data['typeofalert'] %}
+			  <p>{{type}}</p>
+			  {% endfor %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="what_type_of_alert">
@@ -105,14 +103,19 @@
         </div>
       </dl>
 
-      <h2 class="govuk-heading-m">How often want to receive emails</h2>
+      <h2 class="govuk-heading-m">How often you'll receive updates</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Emails
+            Frequency
           </dt>
           <dd class="govuk-summary-list__value">
+			  {%if data['typeofalert'].includes('Emergency or incident in the country')%}
+			  Emergency updates will be sent as they occur.
+			  <br />
+			  Other updates will be sent:
+			  {% endif %}
             {{data['howoftenemail']}}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -122,13 +125,13 @@
           </dd>
         </div>
       </dl>
-
-      <h2 class="govuk-heading-m">Receive Travel Update Until</h2>
+		{% if data['day'] %}
+      <h2 class="govuk-heading-m">Stop receiving updates on this date</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Date
+            End date
           </dt>
           <dd class="govuk-summary-list__value">
             {{data['day']}}/{{data['month']}}/{{data['year']}}
@@ -140,8 +143,8 @@
           </dd>
         </div>
       </dl>
-      
-      <h2 class="govuk-heading-m">Countries to receive alerts for</h2>
+		{% endif %}
+      <h2 class="govuk-heading-m">Countries to receive updates for</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">

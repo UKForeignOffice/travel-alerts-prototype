@@ -12,47 +12,13 @@ router.post('/is-british-national', (req, res) => {
 });
 
 router.post('/check-what-type-of-alert', (req, res) => {
-  const { typeofalert = [] } = req.session.data;
-  if(typeofalert.includes('Emergency updates only') && typeofalert.length == 1) {
+  const { typeofalert } = req.session.data;
+  if(typeofalert.includes('Emergency or incident in the country') && typeofalert.length === 1) {
     res.redirect('/when_do_you_want_to');
   } else {
     res.redirect('/how_often_email');
   }
-  
-});
 
-
-router.post('/is-check-your-answers', (req, res) => {
-  const { emailaddresses = [], emailaddressToAdd } = req.session.data;
-  if(emailaddressToAdd != '') {
-    if (!emailaddresses.includes(emailaddressToAdd)) {
-      req.session.data.emailaddresses = [...emailaddresses, emailaddressToAdd].sort();
-    }
-    res.redirect('/friends-and-family');
-  } else {
-    if (req.session.data['invite'] === 'yes') {
-      return res.redirect('/check-your-answers');
-    } else {
-      req.session.data.emailaddresses = []
-      return res.redirect('/check-your-answers');
-    }
-  }
-});
-
-router.use('/remove_emailaddress', (req, res) => {
-  const { emailaddresses = [] } = req.session.data;
-  const itemsToBeRemoved = req.query.email
-  const filteredArray = emailaddresses.filter(item => !itemsToBeRemoved.includes(item))
-  req.session.data.emailaddresses = filteredArray
-  res.redirect('/friends-and-family');
-});
-
-router.use('/add_emailaddress', (req, res) => {
-  const { emailaddresses = [], emailaddressToAdd } = req.session.data;
-  if (!emailaddresses.includes(emailaddressToAdd)) {
-    req.session.data.emailaddresses = [...emailaddresses, emailaddressToAdd].sort();
-  }
-  res.redirect('/friends-and-family');
 });
 
 router.use('/add_country', (req, res) => {
@@ -67,15 +33,20 @@ router.use('/add_country', (req, res) => {
   res.redirect('/country');
 });
 
+router.post('/channels_chosen', (req, res) => {
+  const { channels } = req.session.data;
+  res.redirect('/check-your-answers');
+});
+
 router.post('/confirmation', (req, res) => {
-  const { emailAddress, phoneNumber, countries } = req.session.data;
+  const { emailAddress, phoneNumber, countries, channels } = req.session.data;
   const options = {
     personalisation: {
       countries
     }
   };
 
-  if (emailAddress) {
+  if (channels.includes('email') && emailAddress) {
     notify.sendEmail(
       // this long string is the template ID, copy it from the template
       // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
@@ -88,7 +59,7 @@ router.post('/confirmation', (req, res) => {
     );
     saveSubscription({ senderId: emailAddress, countries, channel: 'EMAIL' });
   }
-  if (phoneNumber) {
+  if (channels.includes('sms') && phoneNumber) {
     notify.sendSms(
       'f8ff65b3-d33b-4649-bfe4-f19500f25c4a',
       phoneNumber,

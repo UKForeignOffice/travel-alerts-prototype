@@ -17,9 +17,13 @@
 			  <fieldset class="govuk-fieldset" aria-describedby="british-national-hint">
 				  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 					  <h1 class="govuk-heading-xl">
-						  How often do you want to get emails?
+						  How often do you want to receive updates?
 					  </h1>
 				  </legend>
+				  {%if data['typeofalert'].includes('Emergency or incident in the country')%}
+				  <p>Note: Emergency updates will be sent immediately, as they occur.</p>
+				  <h2 class="govuk-heading-m">How often would you like to receive the other types of update that you have selected?</h2>
+				  {% endif %}
 				  <div class="govuk-radios govuk-radios">
 					  <div class="govuk-radios__item">
                           {%if data['howoftenemail'] === 'Once a day'%}
@@ -32,7 +36,7 @@
 						  </label>
 					  </div>
 					  <div class="govuk-radios__item">
-                          {%if data['howoftenemail'] === 'Once a week'%}                          
+                          {%if data['howoftenemail'] === 'Once a week'%}
                           <input class="govuk-radios__input" id="onceaweek" name="howoftenemail" type="radio" value="Once a week" checked>
                           {%else%}
                           <input class="govuk-radios__input" id="onceaweek" name="howoftenemail" type="radio" value="Once a week">
@@ -43,13 +47,13 @@
                       </div>
                       <div class="govuk-radios__divider">or</div>
                       <div class="govuk-radios__item">
-                        {%if data['howoftenemail'] === 'Each add and update'%}                          
+                        {%if data['howoftenemail'] === 'Each add and update'%}
                         <input class="govuk-radios__input" id="eachupdate" name="howoftenemail" type="radio" value="Each add and update" checked>
                         {%else%}
                         <input class="govuk-radios__input" id="eachupdate" name="howoftenemail" type="radio" value="Each add and update">
                         {%endif%}
                         <label class="govuk-label govuk-radios__label" for="british-national-2">
-                            Each time we add or update a page (you may get more than on email a day)
+                            Each time we add or update a page (you may get more than one update a day)
                         </label>
                     </div>
 				  </div>
@@ -57,8 +61,6 @@
 			  </fieldset>
 		  </div>
         <button class="govuk-button" data-module="govuk-button">Continue</button>
-        
-        <p>Do you need to <a href="#">unsubscribe from GOV.UK emails</a>?</p>
 
       </form>
 
