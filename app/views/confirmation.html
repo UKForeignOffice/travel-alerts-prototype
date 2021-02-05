@@ -31,11 +31,8 @@
 		{% if 'whatsapp' in data['channels'] %}
 		<h2 class="govuk-heading-m">WhatsApp</h2>
 		<p>
-			To complete your subscription, add a WhatsApp contact for +14157386170 then send the following two messages in sequence:</p>
-		<ol class="govuk-list">
-			<li>JOIN PERKY SAINT</li>
-			<li>SUBSCRIBE {{data['countries'].join(', ')}}</li>
-		</ol>
+			To complete your subscription, scan this QR code with your mobile phone camera - it will give you a link to open in WhatsApp and subscribe.</p>
+		<img src="/public/images/vonage-qr-whatsapp.png" />
 		</p>
 		{% endif %}
 		<br />
