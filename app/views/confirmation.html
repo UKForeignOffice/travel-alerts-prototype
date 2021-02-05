@@ -10,26 +10,34 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">You’re subscribed to emergency alerts</h1>
+        <h1 class="govuk-panel__title">Your subscription to travel updates</h1>
         <div class="govuk-panel__body">
-          for {{data['countries'].join(', ')}}
+          What to do next
         </div>
       </div>
 		<br />
 		{% if data['emailAddress'] %}
+		<h2 class="govuk-heading-m">Email</h2>
       <p>
-        We have sent a confirmation email to {{data['emailAddress']}}
+        An email has been sent to {{data['emailAddress']}}, which includes a link for you to verify your email address.
       </p>
 		{% endif %}
 		{% if data['phoneNumber'] %}
+		<h2 class="govuk-heading-m">SMS</h2>
 		<p>
-			We have sent a confirmation SMS message to {{data['phoneNumber']}}
+			A message has been sent by SMS to {{data['phoneNumber']}}. Reply to it as directed in the message to verify your number.
 		</p>
 		{% endif %}
-		<br />
-		<hr />
-      <p><a href="sample_email">See an example alert email</a></p>
-      <p><a href="sample_sms">See an example alert SMS</a></p>
+		{% if 'whatsapp' in data['channels'] %}
+		<h2 class="govuk-heading-m">WhatsApp</h2>
+		<p>
+			To complete your subscription, add a WhatsApp contact for +14157386170 then send the following two messages in sequence:</p>
+		<ol class="govuk-list">
+			<li>JOIN PERKY SAINT</li>
+			<li>SUBSCRIBE {{data['countries'].join(', ')}}</li>
+		</ol>
+		</p>
+		{% endif %}
     </div>
   </div>
 

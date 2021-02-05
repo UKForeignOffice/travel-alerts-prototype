@@ -138,3 +138,37 @@ router.post('/email_send', (req, res) => {
 });
 
 module.exports = router
+
+// DEPRECATED - FRIENDS AND FAMILY
+// router.post('/is-check-your-answers', (req, res) => {
+//   const { emailaddresses = [], emailaddressToAdd } = req.session.data;
+//   if(emailaddressToAdd != '') {
+//     if (!emailaddresses.includes(emailaddressToAdd)) {
+//       req.session.data.emailaddresses = [...emailaddresses, emailaddressToAdd].sort();
+//     }
+//     res.redirect('/friends-and-family');
+//   } else {
+//     if (req.session.data['invite'] === 'yes') {
+//       return res.redirect('/check-your-answers');
+//     } else {
+//       req.session.data.emailaddresses = []
+//       return res.redirect('/check-your-answers');
+//     }
+//   }
+// });
+//
+// router.use('/remove_emailaddress', (req, res) => {
+//   const { emailaddresses = [] } = req.session.data;
+//   const itemsToBeRemoved = req.query.email
+//   const filteredArray = emailaddresses.filter(item => !itemsToBeRemoved.includes(item))
+//   req.session.data.emailaddresses = filteredArray
+//   res.redirect('/friends-and-family');
+// });
+//
+// router.use('/add_emailaddress', (req, res) => {
+//   const { emailaddresses = [], emailaddressToAdd } = req.session.data;
+//   if (!emailaddresses.includes(emailaddressToAdd)) {
+//     req.session.data.emailaddresses = [...emailaddresses, emailaddressToAdd].sort();
+//   }
+//   res.redirect('/friends-and-family');
+// });
