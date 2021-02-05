@@ -14,7 +14,7 @@
 
       <h1 class="govuk-heading-xl">Confirm your choices</h1>
 
-      <h2 class="govuk-heading-m">Where we will send the updates</h2>
+      <h2 class="govuk-heading-m">How you'd like to receive updates</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 		  {% if 'email' in data['channels'] and data['emailAddress'] %}
@@ -83,7 +83,29 @@
 		  {% endif %}
       </dl>
 
-      <h2 class="govuk-heading-m">Types of updates</h2>
+		<h2 class="govuk-heading-m">Countries to receive updates for</h2>
+
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Countries
+				</dt>
+				<dd class="govuk-summary-list__value">
+					{% if data['countries'] and data['countries'].length %}
+					{{data['countries'].join(', ')}}
+					{% else %}
+					None selected
+					{% endif %}
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="country">
+						Change
+						<span class="govuk-visually-hidden"> country</span>
+					</a>
+				</dd>
+			</div>
+		</dl>
+      <h2 class="govuk-heading-m">Types of update</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -144,28 +166,6 @@
         </div>
       </dl>
 		{% endif %}
-      <h2 class="govuk-heading-m">Countries to receive updates for</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Countries
-          </dt>
-          <dd class="govuk-summary-list__value">
-			  {% if data['countries'] and data['countries'].length %}
-			  {{data['countries'].join(', ')}}
-			  {% else %}
-			  None selected
-			  {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="country">
-              Change
-              <span class="govuk-visually-hidden"> country</span>
-            </a>
-          </dd>
-        </div>
-      </dl>
 
       <form action="/confirmation" method="post" novalidate>
 
