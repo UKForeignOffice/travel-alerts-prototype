@@ -73,41 +73,6 @@ router.post('/confirmation', (req, res) => {
   res.redirect('/confirmation');
 });
 
-router.post('/sms_send_free_text', (req, res) => {
-  const { message, phoneNumber } = req.session.data;
-  const options = {
-    personalisation: {
-      'countries': ['Spain'],
-      message
-    }
-  };
-  notify.sendSms(
-    'baccbf59-9f54-4f69-a914-ad84e5cc181a',
-    phoneNumber,
-    options
-  )
-  res.redirect('/sms_2');
-});
-
-router.post('/sms_send', (req, res) => {
-  const { phoneNumber } = req.session.data;
-  notify.sendSms(
-    '68352961-fcc9-451a-9f39-ce98d53b8408',
-    phoneNumber
-  )
-  res.redirect('/sms_2');
-});
-
-router.post('/email_send', (req, res) => {
-  const { emailAddress } = req.session.data;
-  notify.sendEmail(
-    '340db034-9438-49e6-a4f2-cd3d4cf1bece',
-    emailAddress
-  );
-
-  res.redirect('/email_alert');
-});
-
 module.exports = router
 
 // DEPRECATED - FRIENDS AND FAMILY
