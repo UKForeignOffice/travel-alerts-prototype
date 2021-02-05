@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+    {% if data['typeofalert'].length == 1 and data['typeofalert'].includes('Emergency updates only') %}
+        <a class="govuk-back-link" href="what_type_of_alert">Back</a>
+    {% else %}
+        <a class="govuk-back-link" href="how_often_email">Back</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="email_sms" method="post">
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  When do you want to receive travel updates until?
+                </h1>
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 03 2022
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label">Until end date: </label>
+                    </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="day" name="day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="month" name="month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="year" name="year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                </div>
+              </div>
+          
+            </fieldset>
+          </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        
+        <p>You can also unsubscribe by clicking a link within every alert message</p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

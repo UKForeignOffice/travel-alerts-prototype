@@ -52,6 +52,64 @@
 		  {% endif %}
       </dl>
 
+      <h2 class="govuk-heading-m">Type of alerts interested</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of alerts
+          </dt>
+          <dd class="govuk-summary-list__value">
+			  {% if data['typeofalert'] and data['typeofalert'].length %}
+			  {{data['typeofalert'].join(', ')}}
+			  {% else %}
+			  None selected
+			  {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="what_type_of_alert">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">How often want to receive emails</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Emails
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['howoftenemail']}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="how_often_email">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">Receive Travel Update Until</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['day']}}/{{data['month']}}/{{data['year']}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="when_do_you_want_to">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+      
       <h2 class="govuk-heading-m">Countries to receive alerts for</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">

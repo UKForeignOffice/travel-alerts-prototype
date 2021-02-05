@@ -11,6 +11,15 @@ router.post('/is-british-national', (req, res) => {
   res.redirect('/not-british-national');
 });
 
+router.post('/check-what-type-of-alert', (req, res) => {
+  const { typeofalert = [] } = req.session.data;
+  if(typeofalert.includes('Emergency updates only') && typeofalert.length == 1) {
+    res.redirect('/when_do_you_want_to');
+  } else {
+    res.redirect('/how_often_email');
+  }
+  
+});
 
 
 router.post('/is-check-your-answers', (req, res) => {

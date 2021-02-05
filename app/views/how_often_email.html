@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="what_type_of_alert">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="when_do_you_want_to" method="post">
+		  <div class="govuk-form-group">
+			  <fieldset class="govuk-fieldset" aria-describedby="british-national-hint">
+				  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+					  <h1 class="govuk-heading-xl">
+						  How often do you want to get emails?
+					  </h1>
+				  </legend>
+				  <div class="govuk-radios govuk-radios">
+					  <div class="govuk-radios__item">
+                          {%if data['howoftenemail'] === 'Once a day'%}
+                          <input class="govuk-radios__input" id="onceaday" name="howoftenemail" type="radio" value="Once a day" checked>
+                          {%else%}
+                          <input class="govuk-radios__input" id="onceaday" name="howoftenemail" type="radio" value="Once a day">
+                          {% endif %}
+						  <label class="govuk-label govuk-radios__label" for="british-national">
+							  Once a day
+						  </label>
+					  </div>
+					  <div class="govuk-radios__item">
+                          {%if data['howoftenemail'] === 'Once a week'%}                          
+                          <input class="govuk-radios__input" id="onceaweek" name="howoftenemail" type="radio" value="Once a week" checked>
+                          {%else%}
+                          <input class="govuk-radios__input" id="onceaweek" name="howoftenemail" type="radio" value="Once a week">
+                          {%endif%}
+						  <label class="govuk-label govuk-radios__label" for="british-national-2">
+							  Once a week
+						  </label>
+                      </div>
+                      <div class="govuk-radios__divider">or</div>
+                      <div class="govuk-radios__item">
+                        {%if data['howoftenemail'] === 'Each add and update'%}                          
+                        <input class="govuk-radios__input" id="eachupdate" name="howoftenemail" type="radio" value="Each add and update" checked>
+                        {%else%}
+                        <input class="govuk-radios__input" id="eachupdate" name="howoftenemail" type="radio" value="Each add and update">
+                        {%endif%}
+                        <label class="govuk-label govuk-radios__label" for="british-national-2">
+                            Each time we add or update a page (you may get more than on email a day)
+                        </label>
+                    </div>
+				  </div>
+
+			  </fieldset>
+		  </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        
+        <p>Do you need to <a href="#">unsubscribe from GOV.UK emails</a>?</p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
