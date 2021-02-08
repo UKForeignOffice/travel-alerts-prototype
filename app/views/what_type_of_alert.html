@@ -41,12 +41,13 @@
 								 value="Travel advice" data-aria-controls="conditional-contact-3">
 						  {% endif %}
 						  <label class="govuk-label govuk-checkboxes__label" for="type-travel-advice">
-							  Travel advice (select to choose categories)
+							  Travel advice
 						  </label>
 					  </div>
 					  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
 						   id="conditional-contact-3">
 						  <div class="govuk-form-group">
+							  <p>You can choose as many categories as you wish</p>
 							  <div class="govuk-checkboxes__item">
 								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Safety and security')%}
 								  <input class="govuk-checkboxes__input" id="safetyandsecurity" name="typeofalert" type="checkbox" value="Safety and security" checked>

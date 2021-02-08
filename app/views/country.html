@@ -9,7 +9,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column">
 		<h1 class="govuk-heading-xl">
-			Which countries / territories do you want to receive travel updates for?
+			Which countries or territories do you want to receive travel updates for?
 		</h1>
 		{% if data['countries'] and data['countries'].length %}
 		<form id="countryList" class="form" method="post" action="what_type_of_alert">
@@ -41,12 +41,12 @@
 				<form class="form" method="post" action="add_country" id="addCountryForm">
 					<div class="govuk-form-group">
 						<h2 class="govuk-heading-m">{% if data['countries'] and data['countries'].length %}
-							Add another country
+							Optional - add another country
 							{% else %}
 							Choose a country
 							{% endif %}</h2>
 						<label class="govuk-label" for="countryToAdd">
-							Type or select a country from the list, then press Add to List
+							If you wish to receive travel updates for another country, select a country from the list below. Once selected, press Add to list.
 						</label>
 						<select class="govuk-select" id="countryToAdd" name="countryToAdd">
 							<option value="">Select a country</option>
@@ -60,7 +60,6 @@
 				</form>
 			</div>
 		</div>
-		<p>When you've finished adding countries, press Continue.</p>
 		<button class="govuk-button" data-module="govuk-button" form="countryList">Continue</button>
 	</div>
 </div>
