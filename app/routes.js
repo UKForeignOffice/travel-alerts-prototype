@@ -33,10 +33,15 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/confirmation', (req, res) => {
-  const { emailAddress, phoneNumberSms, countries, channels } = req.session.data;
+  const { emailAddress, phoneNumberSms, countries, channels, typeofalert } = req.session.data;
+
   const options = {
     personalisation: {
-      countries
+      emailAddress,
+      phoneNumberSms,
+      countries,
+      countryList: countries.join(','),
+      emergencyAlerts: typeofalert.includes('Emergency or incident in the country') ? '1' : '0'
     }
   };
 

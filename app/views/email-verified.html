@@ -9,9 +9,17 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
 
-        <h1 class="govuk-panel__title">Your subscription to travel updates is confirmed</h1>
+        <h1 class="govuk-panel__title">Thanks for confirming your email address</h1>
 
-		<p>You're subscribed by email.</p>
+		<p>You're now subscribed by email to travel updates for {{data['countries']}}.</p>
+
+		<p>The emails will be sent to {{data['email']}}</p>
+
+		{%if data['typeofalert'].includes('Emergency or incident in the country')%}
+		<h2 class="govuk-heading-m">What happens next</h2>
+		<p>When the FCDO is made aware of an emergency in the area you have subscribed to you will receive an alert by your chosen method(s).</p>
+		<p>You may also receive guidance about how to access an emergency flight to return to the UK.</p>
+			{% endif %}
     </div>
   </div>
 
