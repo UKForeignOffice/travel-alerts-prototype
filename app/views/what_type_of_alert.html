@@ -31,16 +31,6 @@
 						  Emergency or incident in the country
 					  </label>
 				  </div>
-				  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
-					   id="conditional-contact">
-					  <div class="govuk-form-group">
-						  <label class="govuk-label" for="emailAddress">
-							  Email address
-						  </label>
-						  <input class="govuk-input govuk-!-width-one-third" id="emailAddress" name="emailAddress"
-								 type="email" spellcheck="false" value="{{data['emailAddress']}}">
-					  </div>
-				  </div>
 				  <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 					  <div class="govuk-checkboxes__item">
 						  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Travel advice')%}
