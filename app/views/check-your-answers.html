@@ -153,9 +153,11 @@
           </dt>
           <dd class="govuk-summary-list__value">
 			  {%if data['typeofalert'].includes('Emergency or incident in the country')%}
-			  Emergency updates will be sent as they occur
+			  Emergency updates will be sent immediately, as they occur
 			  <br />
+			  {%if data['typeofalert'].includes('Travel advice')%}
 			  Other updates will be sent:
+			  {% endif %}
 			  {% endif %}
             {{data['howoftenemail']}}
           </dd>
