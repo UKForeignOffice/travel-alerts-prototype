@@ -45,7 +45,7 @@ router.post('/confirmation', (req, res) => {
       // this long string is the template ID, copy it from the template
       // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
       // in your code.
-      '349ec5ea-b7b5-4401-8a6e-3293aef13818',
+      'a8816229-2147-4263-a56f-b291515b9d7a',
       // `emailAddress` here needs to match the name of the form field in
       // your HTML page
       emailAddress,
