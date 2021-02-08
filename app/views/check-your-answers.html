@@ -10,10 +10,29 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters-from-desktop">
+    <div class="govuk-grid-column-four-fifths-from-desktop">
 
       <h1 class="govuk-heading-xl">Confirm your choices</h1>
 
+		<h2 class="govuk-heading-m">British Nationality status</h2>
+
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Status
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">{% if data['isBritishNational'] === 'yes' %}British National{% else %}
+						non-British National
+						{% endif %}</p>
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="british-national">
+						Change
+					</a>
+				</dd>
+			</div>
+		</dl>
       <h2 class="govuk-heading-m">How you'd like to receive updates</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
