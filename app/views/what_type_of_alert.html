@@ -12,7 +12,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
-      <form class="form" action="check-what-type-of-alert" method="post">
+      <form class="form" action="when_do_you_want_to" method="post">
 		  <div class="govuk-form-group">
 			  <fieldset class="govuk-fieldset" aria-describedby="british-national-hint">
 				  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -22,112 +22,27 @@
 				  </legend>
 			  <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 				  <div class="govuk-checkboxes__item">
-					  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Emergency or incident in the country')%}
-					  <input class="govuk-checkboxes__input" id="emergencyupdateonly" name="typeofalert" type="checkbox" value="Emergency or incident in the country" checked>
-					  {%else%}
-					  <input class="govuk-checkboxes__input" id="emergencyupdateonly" name="typeofalert" type="checkbox" value="Emergency or incident in the country">
-					  {%endif%}
+
+					  <input class="govuk-checkboxes__input" id="emergencyupdateonly" name="typeofalert" type="checkbox" value="Emergency or incident in the country" {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Emergency or incident in the country')%}checked{%endif%}  aria-describedby="emergency-hint">
+
 					  <label class="govuk-label govuk-checkboxes__label" for="emergencyupdateonly">
-						  Emergency or incident in the country
+						  Emergency or incident in {{data['countries'].join(', ')}}
 					  </label>
+					  <div id="emergency-hint" class="govuk-hint govuk-checkboxes__hint">
+						  If an emergency situation occurs, we can send you updates as the situation develops, including advice on what to do.
+					  </div>
 				  </div>
+				  <br />
 				  <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 					  <div class="govuk-checkboxes__item">
-						  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Travel advice')%}
+
 						  <input class="govuk-checkboxes__input" id="type-travel-advice" name="typeofalert" type="checkbox"
-								 value="Travel advice" data-aria-controls="conditional-contact-3" checked>
-						  {% else %}
-						  <input class="govuk-checkboxes__input" id="type-travel-advice" name="typeofalert" type="checkbox"
-								 value="Travel advice" data-aria-controls="conditional-contact-3">
-						  {% endif %}
+								 value="Travel advice" {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Travel advice')%}checked{% endif %} aria-describedby="travel-update-hint">
 						  <label class="govuk-label govuk-checkboxes__label" for="type-travel-advice">
-							  Travel advice updates when the page changes
+							  Updates to travel advice pages on gov.uk
 						  </label>
-					  </div>
-					  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
-						   id="conditional-contact-3">
-						  <div class="govuk-form-group">
-							  <p>You can choose as many categories as you wish</p>
-							  <div class="govuk-checkboxes__item">
-								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Safety and security')%}
-								  <input class="govuk-checkboxes__input" id="safetyandsecurity" name="typeofalert" type="checkbox" value="Safety and security" checked>
-								  {%else%}
-								  <input class="govuk-checkboxes__input" id="safetyandsecurity" name="typeofalert" type="checkbox" value="Safety and security">
-								  {%endif%}
-								  <label class="govuk-label govuk-checkboxes__label" for="safetyandsecurity">
-									  Safety and security
-								  </label>
-							  </div>
-							  <div class="govuk-checkboxes__item">
-								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Terrorism')%}
-								  <input class="govuk-checkboxes__input" id="terrorism" name="typeofalert" type="checkbox" value="Terrorism" checked>
-								  {%else%}
-								  <input class="govuk-checkboxes__input" id="terrorism" name="typeofalert" type="checkbox" value="Terrorism">
-								  {%endif%}
-								  <label class="govuk-label govuk-checkboxes__label" for="terrorism">
-									  Terrorism
-								  </label>
-							  </div>
-							  <div class="govuk-checkboxes__item">
-								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Local laws and customs')%}
-								  <input class="govuk-checkboxes__input" id="locallawsandcustoms" name="typeofalert" type="checkbox" value="Local laws and customs" checked>
-								  {%else%}
-								  <input class="govuk-checkboxes__input" id="locallawsandcustoms" name="typeofalert" type="checkbox" value="Local laws and customs">
-								  {%endif%}
-								  <label class="govuk-label govuk-checkboxes__label" for="locallawsandcustoms">
-									  Local laws and customs
-								  </label>
-							  </div>
-							  <div class="govuk-checkboxes__item">
-								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Entry requirements')%}
-								  <input class="govuk-checkboxes__input" id="entryrequirements" name="typeofalert" type="checkbox" value="Entry requirements" checked>
-								  {%else%}
-								  <input class="govuk-checkboxes__input" id="entryrequirements" name="typeofalert" type="checkbox" value="Entry requirements">
-								  {%endif%}
-								  <label class="govuk-label govuk-checkboxes__label" for="entryrequirements">
-									  Entry requirements
-								  </label>
-							  </div>
-							  <div class="govuk-checkboxes__item">
-								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Health')%}
-								  <input class="govuk-checkboxes__input" id="health" name="typeofalert" type="checkbox" value="Health" checked>
-								  {%else%}
-								  <input class="govuk-checkboxes__input" id="health" name="typeofalert" type="checkbox" value="Health">
-								  {%endif%}
-								  <label class="govuk-label govuk-checkboxes__label" for="health">
-									  Health
-								  </label>
-							  </div>
-							  <div class="govuk-checkboxes__item">
-								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Natural disaster')%}
-								  <input class="govuk-checkboxes__input" id="naturaldisaster" name="typeofalert" type="checkbox" value="Natural disaster" checked>
-								  {%else%}
-								  <input class="govuk-checkboxes__input" id="naturaldisaster" name="typeofalert" type="checkbox" value="Natural disaster">
-								  {%endif%}
-								  <label class="govuk-label govuk-checkboxes__label" for="naturaldisaster">
-									  Natural disaster
-								  </label>
-							  </div>
-							  <div class="govuk-checkboxes__item">
-								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Money')%}
-								  <input class="govuk-checkboxes__input" id="money" name="typeofalert" type="checkbox" value="Money" checked>
-								  {%else%}
-								  <input class="govuk-checkboxes__input" id="money" name="typeofalert" type="checkbox" value="Money">
-								  {%endif%}
-								  <label class="govuk-label govuk-checkboxes__label" for="money">
-									  Money
-								  </label>
-							  </div>
-							  <div class="govuk-checkboxes__item">
-								  {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Travel advice help and support')%}
-								  <input class="govuk-checkboxes__input" id="traveladvicehelpandsupport" name="typeofalert" type="checkbox" value="Travel advice help and support" checked>
-								  {%else%}
-								  <input class="govuk-checkboxes__input" id="traveladvicehelpandsupport" name="typeofalert" type="checkbox" value="Travel advice help and support">
-								  {%endif%}
-								  <label class="govuk-label govuk-checkboxes__label" for="traveladvicehelpandsupport">
-									  Travel advice help and support
-								  </label>
-							  </div>
+						  <div id="travel-update-hint" class="govuk-hint govuk-checkboxes__hint">
+							  Whenever the travel advice for {{data['countries'].join(', ')}} is updated, we will send you a notification
 						  </div>
 					  </div>
 				  </div>
