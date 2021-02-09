@@ -5,16 +5,6 @@ const NotifyClient = require('notifications-node-client').NotifyClient,
 const saveSubscription = require('./save-subscription');
 const defaultSessionData = require('./data/session-data-defaults');
 
-router.post('/check-what-type-of-alert', (req, res) => {
-  const { typeofalert } = req.session.data;
-  if(typeofalert.includes('Emergency or incident in the country') && typeofalert.length === 1) {
-    res.redirect('/when_do_you_want_to');
-  } else {
-    res.redirect('/how_often_email');
-  }
-
-});
-
 router.use('/add_country', (req, res) => {
   const { countries = [], countryToAdd, fullCountryNames } = req.session.data;
   if (!countries.includes(countryToAdd)) {

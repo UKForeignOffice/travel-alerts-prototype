@@ -5,11 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-    {% if data['typeofalert'].length == 1 and data['typeofalert'].includes('Emergency updates only') %}
         <a class="govuk-back-link" href="what_type_of_alert">Back</a>
-    {% else %}
-        <a class="govuk-back-link" href="how_often_email">Back</a>
-    {% endif %}
 {% endblock %}
 
 {% block content %}

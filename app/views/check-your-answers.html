@@ -33,6 +33,30 @@
 				</dd>
 			</div>
 		</dl>
+
+
+		<h2 class="govuk-heading-m">Countries to receive updates for</h2>
+
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Countries
+				</dt>
+				<dd class="govuk-summary-list__value">
+					{% if data['countries'] and data['countries'].length %}
+					{{data['countries'].join(', ')}}
+					{% else %}
+					None selected
+					{% endif %}
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="country">
+						Change
+						<span class="govuk-visually-hidden"> country</span>
+					</a>
+				</dd>
+			</div>
+		</dl>
       <h2 class="govuk-heading-m">How you'd like to receive updates</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -101,29 +125,6 @@
           </div>
 		  {% endif %}
       </dl>
-
-		<h2 class="govuk-heading-m">Countries to receive updates for</h2>
-
-		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-			<div class="govuk-summary-list__row">
-				<dt class="govuk-summary-list__key">
-					Countries
-				</dt>
-				<dd class="govuk-summary-list__value">
-					{% if data['countries'] and data['countries'].length %}
-					{{data['countries'].join(', ')}}
-					{% else %}
-					None selected
-					{% endif %}
-				</dd>
-				<dd class="govuk-summary-list__actions">
-					<a href="country">
-						Change
-						<span class="govuk-visually-hidden"> country</span>
-					</a>
-				</dd>
-			</div>
-		</dl>
       <h2 class="govuk-heading-m">Types of update</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -138,31 +139,6 @@
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="what_type_of_alert">
-              Change
-            </a>
-          </dd>
-        </div>
-      </dl>
-
-      <h2 class="govuk-heading-m">How often you'll receive updates</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Frequency
-          </dt>
-          <dd class="govuk-summary-list__value">
-			  {%if data['typeofalert'].includes('Emergency or incident in the country')%}
-			  Emergency updates will be sent immediately, as they occur
-			  <br />
-			  {%if data['typeofalert'].includes('Travel advice')%}
-			  Other updates will be sent:
-			  {% endif %}
-			  {% endif %}
-            {{data['howoftenemail']}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="how_often_email">
               Change
             </a>
           </dd>
