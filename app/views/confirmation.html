@@ -31,8 +31,7 @@
 		{% if 'whatsapp' in data['channels'] %}
 		<h2 class="govuk-heading-m">WhatsApp</h2>
 		<p>
-			To complete your subscription, scan this QR code with your mobile phone camera - it will give you a link to open in WhatsApp and subscribe.</p>
-		<img src="/public/images/vonage-qr-whatsapp.png" />
+			A WhatsApp message has been sent to {{data['phoneNumberWhatsApp']}}. Reply to it as directed in the message to verify your number.
 		</p>
 		{% endif %}
 
