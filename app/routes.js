@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const NotifyClient = require('notifications-node-client').NotifyClient,
-  notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+const sendConfirmMessage = require('./send-confirm-message')
 const saveSubscription = require('./save-subscription');
 const defaultSessionData = require('./data/session-data-defaults');
 
@@ -23,45 +22,27 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/confirmation', (req, res) => {
-  const { emailAddress, phoneNumberSms, countries, channels, typeofalert } = req.session.data;
+  const { emailAddress, phoneNumberSms, phoneNumberWhatsApp, countries, channels, typeofalert } = req.session.data;
 
-  const options = {
-    personalisation: {
-      emailAddress,
-      phoneNumberSms,
-      countries,
-      countryList: countries.join(','),
-      emergencyAlerts: typeofalert.includes('Emergency or incident in the country') ? '1' : '0'
-    }
-  };
+  const userRequestedEmergencyAlerts = typeofalert.includes('Emergency or incident in the country') ? '1' : '0'
 
   if (channels.includes('email') && emailAddress) {
-    notify.sendEmail(
-      // this long string is the template ID, copy it from the template
-      // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
-      // in your code.
-      'a8816229-2147-4263-a56f-b291515b9d7a',
-      // `emailAddress` here needs to match the name of the form field in
-      // your HTML page
-      emailAddress,
-      options
-    );
-    saveSubscription({ senderId: emailAddress, countries, channel: 'EMAIL' });
+    sendConfirmMessage({ senderId: emailAddress, countries, channel: 'EMAIL', userRequestedEmergencyAlerts })
   }
   if (channels.includes('sms') && phoneNumberSms) {
-    notify.sendSms(
-      'f8ff65b3-d33b-4649-bfe4-f19500f25c4a',
-      phoneNumberSms,
-      options
-    )
-    saveSubscription({ senderId: phoneNumberSms, countries, channel: 'SMS' });
+    sendConfirmMessage({ senderId: phoneNumberSms, countries, channel: 'SMS', userRequestedEmergencyAlerts })
   }
-
-  // This is the URL the users will be redirected to once the email
-  // has been sent
+  if (channels.includes('whatsapp') && phoneNumberWhatsApp) {
+    sendConfirmMessage({ senderId: phoneNumberWhatsApp, countries, channel: 'WHATSAPP', userRequestedEmergencyAlerts })
+  }
   res.redirect('/confirmation');
 });
 
+router.get('/email-verified', (req, res, next) => {
+  const { email, countryList } = req.query;
+  saveSubscription({ senderId: email, countries: countryList.split(','), channel: 'EMAIL' });
+  next()
+})
 module.exports = router
 
 // DEPRECATED - FRIENDS AND FAMILY
