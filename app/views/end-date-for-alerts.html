@@ -5,23 +5,23 @@
 {% endblock %}
 
 {% block beforeContent %}
-        <a class="govuk-back-link" href="what_type_of_alert">Back</a>
+        <a class="govuk-back-link" href="types-of-alert">Back</a>
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
-      <form class="form" action="choose_channels" method="post">
+      <form class="form" action="check-your-answers" method="post">
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-heading-xl">
-                  When do you want to stop receiving travel updates?
+                  When do you want to stop receiving updates?
                 </h1>
               </legend>
 
-				<p>If you do not wish to stop receiving travel updates, leave the end date blank and press continue.</p>
+				<p>If you do not wish to stop receiving updates, leave the end date blank and press continue.</p>
 				<p>You'll also be able to unsubscribe at any time, instructions will be in every update you're sent.</p>
              <div class="govuk-date-input" id="passport-issued">
                 <div class="govuk-date-input__item">

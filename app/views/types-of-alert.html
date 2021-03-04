@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="country">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form class="form" action="types-of-alert_submit" method="post">
+		  <div class="govuk-form-group">
+			  <fieldset class="govuk-fieldset" aria-describedby="british-national-hint">
+				  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+					  <h1 class="govuk-heading-xl">
+						  Which types of update do you want to receive?
+					  </h1>
+				  </legend>
+			  <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+				  <div class="govuk-checkboxes__item">
+
+					  <input class="govuk-checkboxes__input" id="type-travel-advice" name="typeofalert" type="checkbox"
+							 value="Travel advice" {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Travel advice')%}checked{% endif %} aria-describedby="travel-update-hint">
+					  <label class="govuk-label govuk-checkboxes__label" for="type-travel-advice">
+						  Changes to travel advice pages on gov.uk
+					  </label>
+					  <div id="travel-update-hint" class="govuk-hint govuk-checkboxes__hint">
+						  Whenever the travel advice pages for {{data['countries'].join(', ')}} are changed, we'll email you with details
+					  </div>
+				  </div>
+				  <br />
+				  <div class="govuk-checkboxes__item">
+
+					  <input class="govuk-checkboxes__input" id="emergencyupdateonly" name="typeofalert" type="checkbox" value="Emergency alerts" {%if data['typeofalert'].length > 0 and data['typeofalert'].includes('Emergency alerts')%}checked{%endif%}  aria-describedby="emergency-hint">
+
+					  <label class="govuk-label govuk-checkboxes__label" for="emergencyupdateonly">
+						  Emergency or incident in {{data['countries'].join(', ')}}
+					  </label>
+					  <div id="emergency-hint" class="govuk-hint govuk-checkboxes__hint">
+						  If an emergency occurs we can send you updates as it develops, including advice on what to do. You can receive these via email, SMS and WhatsApp.
+					  </div>
+				  </div>
+			  </div>
+			  </fieldset>
+		  </div>
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block beforeContent %}
-<a class="govuk-back-link" href="when_do_you_want_to">Back</a>
+<a class="govuk-back-link" href="types-of-alert">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -9,12 +9,12 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-three-quarters">
 		<h1 class="govuk-heading-xl">
-			How would you like to receive travel updates?
+			How would you like to receive emergency alerts?
 		</h1>
-				<p>Selecting more than one option could help ensure you receive an alert in the event of an emergency.</p>
+				<p>Selecting more than one option could help ensure you receive an alert during an emergency.</p>
 				<p>For example, if you're travelling to a location where internet access or mobile networks might be unreliable, consider subscribing to both an internet-based service (email, WhatsApp) as well as SMS.</p>
 		<br />
-		<form class="form" method="post" action="check-your-answers">
+		<form class="form" method="post" action="end-date-for-alerts">
 			<div class="govuk-form-group">
 				<div class="govuk-checkboxes" data-module="govuk-checkboxes">
 					<div class="govuk-checkboxes__item">
@@ -35,6 +35,9 @@
 							<label class="govuk-label" for="emailAddress">
 								Email address
 							</label>
+							<div id="telephone-number-hint" class="govuk-hint">
+								Use an email account that you'll be able to access easily while you're travelling
+							</div>
 							<input class="govuk-input govuk-!-width-one-third" id="emailAddress" name="emailAddress"
 								   type="email" spellcheck="false" value="{{data['emailAddress']}}">
 						</div>

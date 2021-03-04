@@ -21,10 +21,31 @@ router.get('/', (req, res, next) => {
   next();
 });
 
+router.post('/types-of-alert_submit', (req, res) => {
+  const {  typeofalert } = req.session.data;
+  const userRequestedTravelAdvice = typeofalert.includes('Travel advice')
+  const userRequestedEmergencyAlerts = typeofalert.includes('Emergency alerts')
+  if (userRequestedTravelAdvice) {
+    res.redirect('/travel-updates-email')
+    return
+  }
+  if (userRequestedEmergencyAlerts) {
+    res.redirect('/choose-channels')
+  }
+})
+
+router.post('/travel-updates-email-submit', (req, res) => {
+  if (req.session.data.typeofalert.includes('Emergency alerts')) {
+    res.redirect('/choose-channels')
+    return
+  }
+  res.redirect('/end-date-for-alerts')
+})
+
 router.post('/confirmation', (req, res) => {
   const { emailAddress, phoneNumberSms, phoneNumberWhatsApp, countries, channels, typeofalert } = req.session.data;
 
-  const userRequestedEmergencyAlerts = typeofalert.includes('Emergency or incident in the country') ? '1' : '0'
+  const userRequestedEmergencyAlerts = typeofalert.includes('Emergency alerts') ? '1' : '0'
 
   if (channels.includes('email') && emailAddress) {
     sendConfirmMessage({ senderId: emailAddress, countries, channel: 'EMAIL', userRequestedEmergencyAlerts })

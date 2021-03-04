@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="choose_channels">Back</a>
+  <a class="govuk-back-link" href="choose-channels">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -57,7 +57,29 @@
 				</dd>
 			</div>
 		</dl>
-      <h2 class="govuk-heading-m">How you'd like to receive updates</h2>
+		{% if 'Travel advice' in data['typeofalert'] %}
+		<h2 class="govuk-heading-m">Travel advice page updates</h2>
+
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Email
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">{{data['emailAddressTravelAdvice']}}</p>
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="travel-updates-email">
+						Change
+					</a>
+				</dd>
+			</div>
+		</dl>
+		{% endif %}
+
+		{% if 'Emergency alerts' in data['typeofalert'] %}
+
+      <h2 class="govuk-heading-m">Emergency alerts</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 		  {% if 'email' in data['channels'] and data['emailAddress'] %}
@@ -69,7 +91,7 @@
               <p class="govuk-body">{{data['emailAddress']}}</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="choose_channels">
+            <a href="choose-channels">
               Change
             </a>
           </dd>
@@ -84,7 +106,7 @@
 				  <p class="govuk-body">{{data['phoneNumberSms']}}</p>
 			  </dd>
 			  <dd class="govuk-summary-list__actions">
-				  <a href="choose_channels">
+				  <a href="choose-channels">
 					  Change
 				  </a>
 			  </dd>
@@ -100,51 +122,14 @@
 			  </dd>
 			  </dd>
 			  <dd class="govuk-summary-list__actions">
-				  <a href="choose_channels">
+				  <a href="choose-channels">
 					  Change
 				  </a>
 			  </dd>
 		  </div>
 		  {% endif %}
-		  {% if data['emailaddresses'] and data['emailaddresses'].length %}
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Friends and Family
-            </dt>
-            <dd class="govuk-summary-list__value">
-
-                  {% for emailaddress in data['emailaddresses'] %}
-                    <p class="govuk-body">{{emailaddress}}</p>
-                  {% endfor %}
-
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a href="friends-and-family">
-                Change
-              </a>
-            </dd>
-          </div>
-		  {% endif %}
       </dl>
-      <h2 class="govuk-heading-m">Types of update</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Types
-          </dt>
-          <dd class="govuk-summary-list__value">
-			  {% for type in data['typeofalert'] %}
-			  {% if type !== 'Travel advice' %}<p>{{type}}</p>{% endif %}
-			  {% endfor %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="what_type_of_alert">
-              Change
-            </a>
-          </dd>
-        </div>
-      </dl>
+		{% endif %}
 		{% if data['day'] %}
       <h2 class="govuk-heading-m">Stop receiving updates on this date</h2>
 
@@ -157,7 +142,7 @@
             {{data['day']}}/{{data['month']}}/{{data['year']}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="when_do_you_want_to">
+            <a href="end-date-for-alerts">
               Change
             </a>
           </dd>
