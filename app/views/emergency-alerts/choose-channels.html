@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="types-of-alert">Back</a>
+{% endblock %}
+
+{% block pageTitle %}
+How would you like to receive emergency alerts? - gov.uk
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-three-quarters">
+		<form class="form" method="post" action="end-date-for-alerts">
+			<fieldset class="govuk-fieldset">
+				<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+					<h1 class="govuk-heading-xl">How would you like to receive emergency alerts?
+					</h1>
+				</legend>
+				<p>Selecting more than one option could help ensure you receive an alert during an emergency.</p>
+				<p>For example, if you're travelling to a location where internet access or mobile networks might be unreliable, consider subscribing to both email and SMS.</p>
+			<div class="govuk-form-group">
+				<div class="govuk-checkboxes" data-module="govuk-checkboxes">
+					<div class="govuk-checkboxes__item">
+						{% if 'email' in data['channels'] and data['emailAddress'] %}
+						<input class="govuk-checkboxes__input" id="channels-email" name="channels" type="checkbox" value="email" data-aria-controls="conditional-contact" checked>
+						{% else %}
+						<input class="govuk-checkboxes__input" id="channels-email" name="channels" type="checkbox" value="email" data-aria-controls="conditional-contact">
+						{% endif %}
+						<label class="govuk-label govuk-checkboxes__label" for="channels-email">
+							Email
+						</label>
+					</div>
+					<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+						 id="conditional-contact">
+						<div class="govuk-form-group">
+							<label class="govuk-label" for="emailAddress">
+								Email address
+							</label>
+							<div id="telephone-number-hint" class="govuk-hint">
+								Use an email account that you'll be able to access easily while you're travelling
+							</div>
+							<input class="govuk-input govuk-!-width-one-third" id="emailAddress" name="emailAddress"
+								   type="email" spellcheck="false" value="{{data.emailAddress}}">
+						</div>
+					</div>
+					<div class="govuk-checkboxes" data-module="govuk-checkboxes">
+						<div class="govuk-checkboxes__item">
+							{% if 'sms' in data['channels'] and data['phoneNumberSms'] %}
+							<input class="govuk-checkboxes__input" id="channels-sms" name="channels" type="checkbox"
+								   value="sms" data-aria-controls="conditional-contact-3" checked>
+							{% else %}
+							<input class="govuk-checkboxes__input" id="channels-sms" name="channels" type="checkbox"
+								   value="sms" data-aria-controls="conditional-contact-3">
+							{% endif %}
+							<label class="govuk-label govuk-checkboxes__label" for="channels-sms">
+								SMS
+							</label>
+						</div>
+						<div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+							 id="conditional-contact-3">
+							<div class="govuk-form-group">
+								<label class="govuk-label" >
+									Mobile phone number
+								</label>
+								<div id="telephone-number-hint" class="govuk-hint">
+									For international numbers include the country code
+								</div>
+								<input class="govuk-input govuk-!-width-one-third" id="phoneNumberSms" name="phoneNumberSms"
+									   type="tel" value="{{data['phoneNumberSms']}}" aria-describedby="telephone-number-hint" autocomplete="tel">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="govuk-button" data-module="govuk-button">Continue</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

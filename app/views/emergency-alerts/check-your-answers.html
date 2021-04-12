@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Confirm your choices - gov.uk
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="choose-channels">Back<span class="govuk-visually-hidden"> to When do you want to stop receiving updates?</span></a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-four-fifths-from-desktop">
+
+      <h1 class="govuk-heading-xl">Confirm your choices</h1>
+
+		<h2 class="govuk-heading-m">British Nationality status</h2>
+
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Status
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">{% if data['isBritishNational'] === 'yes' %}British national{% else %}
+						non-British national
+						{% endif %}</p>
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="british-national">
+						Change
+					</a>
+				</dd>
+			</div>
+		</dl>
+
+
+		<h2 class="govuk-heading-m">Countries to receive updates for</h2>
+
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Countries
+				</dt>
+				<dd class="govuk-summary-list__value">
+					{% if data['countries'] and data['countries'].length %}
+					{{data['countries'].join(', ')}}
+					{% else %}
+					None selected
+					{% endif %}
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="country">
+						Change
+						<span class="govuk-visually-hidden"> country</span>
+					</a>
+				</dd>
+			</div>
+		</dl>
+		{% if 'Travel advice' in data['typeofalert'] %}
+		<h2 class="govuk-heading-m">Travel advice page updates</h2>
+
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Email
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">{{data['emailAddressTravelAdvice']}}</p>
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="travel-updates-email">
+						Change
+					</a>
+				</dd>
+			</div>
+		</dl>
+		{% endif %}
+
+		{% if 'Emergency alerts' in data['typeofalert'] %}
+
+      <h2 class="govuk-heading-m">Emergency alerts</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+		  {% if 'email' in data['channels'] and data['emailAddress'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Email
+          </dt>
+          <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{data['emailAddress']}}</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="choose-channels">
+              Change
+            </a>
+          </dd>
+        </div>
+		  {% endif %}
+		  {% if 'sms' in data['channels'] and data['phoneNumberSms'] %}
+		  <div class="govuk-summary-list__row">
+			  <dt class="govuk-summary-list__key">
+				  SMS
+			  </dt>
+			  <dd class="govuk-summary-list__value">
+				  <p class="govuk-body">{{data['phoneNumberSms']}}</p>
+			  </dd>
+			  <dd class="govuk-summary-list__actions">
+				  <a href="choose-channels">
+					  Change
+				  </a>
+			  </dd>
+		  </div>
+		  {% endif %}
+		  {% if 'whatsapp' in data['channels'] %}
+		  <div class="govuk-summary-list__row">
+			  <dt class="govuk-summary-list__key">
+				  WhatsApp
+			  </dt>
+			  <dd class="govuk-summary-list__value">
+				  <p class="govuk-body">{{data['phoneNumberWhatsApp']}}</p>
+			  </dd>
+			  </dd>
+			  <dd class="govuk-summary-list__actions">
+				  <a href="choose-channels">
+					  Change
+				  </a>
+			  </dd>
+		  </div>
+		  {% endif %}
+      </dl>
+		{% endif %}
+		{% if data['day'] %}
+      <h2 class="govuk-heading-m">Stop receiving updates on this date</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            End date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data['day']}}/{{data['month']}}/{{data['year']}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="end-date-for-alerts">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+		{% endif %}
+
+      <form action="/confirmation" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Confirm
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

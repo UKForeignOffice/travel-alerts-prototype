@@ -11,7 +11,7 @@ router.use('/add_country', (req, res) => {
   }
   req.session.data.availableCountries = fullCountryNames.filter(country => !req.session.data.countries.includes(country));
   if (req.query.countryToAdd) {
-    return res.redirect('/intro');
+    return res.redirect(req.query.emergency ? '/emergency-alerts/intro' : '/intro');
   }
   res.redirect('/country');
 });

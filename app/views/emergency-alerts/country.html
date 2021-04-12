@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="british-national">Back<span class="govuk-visually-hidden"> to Are you a British National?</span></a>
+{% endblock %}
+
+{% block pageTitle %}
+Which countries or territories do you want to receive travel updates for? - gov.uk
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column">
+		<h1 class="govuk-heading-xl">
+			Which countries or territories do you want to receive travel updates for?
+		</h1>
+		{% if data['countries'] and data['countries'].length %}
+		<form id="countryList" class="form" method="post" action="choose-channels">
+			<div class="govuk-form-group">
+				<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+					<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+						<h2 class="govuk-fieldset__heading">
+							Your selected countries
+						</h2>
+					</legend>
+					<div class="govuk-checkboxes">
+						{% for country in data['countries'] %}
+						<div class="govuk-checkboxes__item">
+							<input class="govuk-checkboxes__input" id="country" name="countries" type="checkbox"
+								   value="{{country}}" checked>
+							<label class="govuk-label govuk-checkboxes__label" for="country">
+								{{country}}
+							</label>
+						</div>
+						{% endfor %}
+					</div>
+
+				</fieldset>
+			</div>
+		</form>
+		{% endif %}
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-one-half-from-desktop">
+				<form class="form" method="post" action="add_country" id="addCountryForm">
+					<div class="govuk-form-group">
+						<h2 class="govuk-heading-m">{% if data['countries'] and data['countries'].length %}
+							Optional - add another country
+							{% else %}
+							Choose a country
+							{% endif %}</h2>
+						<label class="govuk-label" for="countryToAdd">
+							If you wish to receive travel updates for another country, select a country from the list below. Once selected, press Add to list.
+						</label>
+						<select class="govuk-select" id="countryToAdd" name="countryToAdd">
+							<option value="">Select a country</option>
+							{% for country in data['availableCountries'] %}
+							<option value="{{country}}">{{country}}</option>
+							{% endfor %}
+						</select>
+						<div id="my-autocomplete-container"></div>
+						<button class="govuk-button govuk-button--secondary" data-module="govuk-button">Add to list</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<button class="govuk-button" data-module="govuk-button" form="countryList">Continue</button>
+	</div>
+</div>
+<link rel="stylesheet" href="/public/javascripts/accessible-autocomplete.min.css" />
+<script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script>
+  accessibleAutocomplete.enhanceSelectElement({
+    defaultValue: '',
+    selectElement: document.querySelector('#countryToAdd'),
+	showAllValues: true,
+    displayMenu: 'overlay'
+  });
+  document.querySelector('.autocomplete__dropdown-arrow-down').addEventListener('click', function() {
+    document.querySelector('#countryToAdd').click();
+    document.querySelector('#countryToAdd').focus();
+  })
+</script>
+{% endblock %}
