@@ -197,29 +197,8 @@
 
 
 			<div class="gem-c-govspeak govuk-govspeak direction-ltr" data-module="govspeak">
-				<div class="travel-advice-notice">
-					<div class="travel-advice-notice__header">
 
-						<div id="warning-text-577ee2bf" class="gem-c-warning-text govuk-warning-text">
-							<h2 class="govuk-warning-text__text gem-c-warning-text__text--large">
-								NEW - Emergency travel alerts
-
-							</h2>
-						</div>
-					</div>
-					<div class="travel-advice-notice__content">
-						<div class="gem-c-govspeak govuk-govspeak direction-ltr" data-module="govspeak">
-							<!--						<p>-->
-							<!--							<a href="https://fcdo-sms-subscriber.herokuapp.com/alert-history?country=Myanmar&sort=desc">See all alerts</a> for this incident.-->
-							<!--						</p>-->
-							<p>If an emergency situation occurs in Kenya that threatens the safety of British Nationals or may significantly disrupts travel plans, for example a terrorist attack or natural disaster, we can send you updates as it develops, including advice on what to do.
-							</p>
-							<p>
-								<a href="/add_country?countryToAdd=Kenya&emergency=true">Sign up to receive alerts and the latest information</a> by email and SMS.
-							</p>
-						</div>
-					</div>
-				</div>
+				{% include "includes/alert-subscribe-box.html" %}
 				<p><strong>The Foreign, Commonwealth &amp; Development Office (<abbr title="Foreign, Commonwealth &amp; Development Office">FCDO</abbr>) advises against all but essential travel to:</strong></p>
 
 				<ul>
