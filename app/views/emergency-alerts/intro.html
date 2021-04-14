@@ -19,7 +19,7 @@ Subscribe to travel updates for Myanmar - gov.uk
       </h1>
 
 		<p>Use this free service to subscribe to emergency travel alerts.</p>
-		<p>If an emergency situation occurs in Myanmar that threatens the safety of British Nationals or may significantly disrupts travel plans, for example a terrorist attack or natural disaster, we can send you updates as it develops, including advice on what to do.
+		<p>If an emergency situation occurs{% if data['countries'] and data['countries'].length %} in {{data['countries'].join(', ')}}{% endif %} that threatens the safety of British Nationals or may significantly disrupts travel plans, for example a terrorist attack or natural disaster, we can send you updates as it develops, including advice on what to do.
 		</p>
 		<p>You can receive these via email and SMS.</p>
 

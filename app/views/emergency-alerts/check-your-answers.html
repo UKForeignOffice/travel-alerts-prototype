@@ -57,27 +57,6 @@ Confirm your choices - gov.uk
 				</dd>
 			</div>
 		</dl>
-		{% if 'Travel advice' in data['typeofalert'] %}
-		<h2 class="govuk-heading-m">Travel advice page updates</h2>
-
-		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-			<div class="govuk-summary-list__row">
-				<dt class="govuk-summary-list__key">
-					Email
-				</dt>
-				<dd class="govuk-summary-list__value">
-					<p class="govuk-body">{{data['emailAddressTravelAdvice']}}</p>
-				</dd>
-				<dd class="govuk-summary-list__actions">
-					<a href="travel-updates-email">
-						Change
-					</a>
-				</dd>
-			</div>
-		</dl>
-		{% endif %}
-
-		{% if 'Emergency alerts' in data['typeofalert'] %}
 
       <h2 class="govuk-heading-m">Emergency alerts</h2>
 
@@ -96,7 +75,6 @@ Confirm your choices - gov.uk
             </a>
           </dd>
         </div>
-		  {% endif %}
 		  {% if 'sms' in data['channels'] and data['phoneNumberSms'] %}
 		  <div class="govuk-summary-list__row">
 			  <dt class="govuk-summary-list__key">
