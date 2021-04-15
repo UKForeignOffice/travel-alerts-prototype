@@ -21,6 +21,11 @@ router.get('/', (req, res, next) => {
   next();
 });
 
+router.get('/emergency-alerts/intro', (req, res, next) => {
+  req.session.data = {...defaultSessionData};
+  next();
+});
+
 router.post('/types-of-alert_submit', (req, res) => {
   const {  typeofalert } = req.session.data;
   const userRequestedTravelAdvice = typeofalert.includes('Travel advice')
