@@ -16,8 +16,9 @@ router.use('/add_country', (req, res) => {
   res.redirect('/country');
 });
 
-router.get('/', (req, res, next) => {
+router.get(/\/(option)?/, (req, res, next) => {
   req.session.data = {...defaultSessionData};
+  console.log(`Session data reset for path ${req.path}`)
   next();
 });
 
