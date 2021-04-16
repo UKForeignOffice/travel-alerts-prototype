@@ -16,12 +16,6 @@ router.use('/add_country', (req, res) => {
   res.redirect('/country');
 });
 
-router.get(/\/(option)?/, (req, res, next) => {
-  req.session.data = {...defaultSessionData};
-  console.log(`Session data reset for path ${req.path}`)
-  next();
-});
-
 router.post('/types-of-alert_submit', (req, res) => {
   const {  typeofalert } = req.session.data;
   const userRequestedTravelAdvice = typeofalert.includes('Travel advice')
