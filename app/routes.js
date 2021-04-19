@@ -17,7 +17,7 @@ router.use('/add_country', (req, res) => {
 });
 
 router.post('/types-of-alert_submit', (req, res) => {
-  const {  typeofalert } = req.session.data;
+  const { typeofalert } = req.session.data;
   const userRequestedTravelAdvice = typeofalert.includes('Travel advice')
   const userRequestedEmergencyAlerts = typeofalert.includes('Emergency alerts')
   if (userRequestedTravelAdvice) {
